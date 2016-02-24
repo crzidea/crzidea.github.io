@@ -13,7 +13,7 @@ tags: node javascript memory leak
   > If this is running for production code, that's a few seconds for 10,000 users.
   
   > Is this really acceptable in production environment?
-* 我心眼目睹的一个项目直接断言 nodejs 不适合处理计算密集型的任务，把用 nodejs 做好的服务换成了 java
+* 我亲眼目睹的一个项目直接断言 nodejs 不适合处理计算密集型的任务，把用 nodejs 做好的服务换成了 java
 * 尤其是最近用写了一个[分析数据的项目](https://github.com/crzidea/index-net)，发现50M的文本数据被转来转去之后，竟然被 node 进程吃掉3G的内存然后自己死掉了。
 
 但是要明确一点：***怎么用/用成什么样,和 nodejs、v8、项目都没有关系。大部分的问题来自于开发者自己。***用不好不能怨别人。
