@@ -118,7 +118,7 @@ for (var i = 0, l = 16; i < l; i++) {
 function leakMemory() {
   var bigData = Array(1024 * 1024 * 16).map(() => 0)
   setTimeout(() => {
-    var bigData    // bigData no longer holds big data
+    bigData        // bigData no longer holds big data
   }, 3600000)
   setTimeout(() => {
     bigData = null // release resource
