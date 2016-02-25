@@ -134,6 +134,7 @@ for (var i = 0, l = 16; i < l; i++) {
 
 * 如果遇到和`v8`、`gc`相关的参数问题，首先使用`node --v8-options | less`获得帮助
 * 不要过早优化内存使用。1.7G 内存不够用时，尝试使用`--max_old_space_size`调整老生区大小。
+* 调大新生区，可以减少 GC 阻塞进程的时间。可以通过`--max_new_space_size`设置
 * 使用`--trace_gc`参数查看 GC 的活动情况。
 * 使用 [node-inspector](https://github.com/node-inspector/node-inspector) 的内存快照功能，可以分析出不正常的内存使用。
 * 当且仅当 node 进程需要**给系统中其他进程让出内存**时，使用`--expose_gc`参数，手动调用`gc()`。我仍然相信绝大多数时候你不需要使用它。
