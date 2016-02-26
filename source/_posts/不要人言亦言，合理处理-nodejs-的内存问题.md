@@ -93,6 +93,37 @@ for (var i = 0, l = 16; i < l; i++) {
 
 匿名函数被`setTimeout()`调用之后，该函数的引用将被`setTimeout()`删除，此时匿名函数就不再是“可被访问的函数”了，所以变量占用的空间会被自动回收掉，就不会造成`process out of memory`的错误了。
 
+除了`setTimeout()`之外，还有一些场景会自动删除函数引用：
+
+* 使用`clearInterval()`/`clearTimeout()`清除了创建的`timer`。
+  ```
+	function leakMemory() {
+	  var bigData = Array(1024 * 1024 * 16).map(() => 0)
+	  var timer = setTimeout(() => {
+	    bigData
+	  }, 3600000)
+	  clearTimeout(timer)
+	}
+	
+	for (var i = 0, l = 16; i < l; i++) {
+	  leakMemory()
+	}
+  ```
+* 数组的方法（例如`.forEach()`、`.map()`等）也会在运行完函数之后删除回调函数的引用。
+  ```
+	function leakMemory() {
+	  var bigData = Array(1024 * 1024 * 16).map(() => 0)
+	  var array = [1, 2]
+	  array.map(() => {
+	    bigData
+	  })
+	}
+	
+	for (var i = 0, l = 16; i < l; i++) {
+	  leakMemory()
+	}
+  ```
+
 ### “函数外的变量”
 
 这一点比较好理解，假如我们不访问函数外的变量，也不会造成内存泄露。
