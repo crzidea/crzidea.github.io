@@ -58,6 +58,9 @@
 <% if (!index && theme.share){ %>
 <%- partial('post/share') %>
 <% } %>
+<article class="article">
+  <wb:comments url="http://open.weibo.com/widget/comments.php" width="auto"></wb:comments>
+</article>
 
 <% if (!index && theme.duoshuo && post.comments){ %>
 <%- partial('post/duoshuo', {
@@ -115,7 +118,7 @@
         open_in_new: <%=theme.open_in_new%>
         }
         </script>
-    <% } %>    
+    <% } %>
 <% } else { %>
     <script>
     var yiliaConfig = {
