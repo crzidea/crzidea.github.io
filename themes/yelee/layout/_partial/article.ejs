@@ -58,9 +58,12 @@
 <% if (!index && theme.share){ %>
 <%- partial('post/share') %>
 <% } %>
+
+<% if (!index){ %>
 <article class="article">
   <wb:comments url="http://open.weibo.com/widget/comments.php" width="auto"></wb:comments>
 </article>
+<% } %>
 
 <% if (!index && theme.duoshuo && post.comments){ %>
 <%- partial('post/duoshuo', {
