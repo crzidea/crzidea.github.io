@@ -12,7 +12,7 @@ tags: raspberry pi gopigo node js gamepad
 * [PDF](https://onedrive.live.com/redir?resid=54561A1F3D9AD481!7013&authkey=!AJpOr09DZ7rpGJs&ithint=file%2cpdf)
 * [实物图](https://www.zhihu.com/question/20212369/answer/94933812)
 
-github:
+*github*:
 
 * [crzidea/gamepadgo-server](https://github.com/crzidea/gamepadgo-server)
 * [crzidea/gamepadgo-client](https://github.com/crzidea/gamepadgo-client)
