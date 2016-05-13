@@ -44,10 +44,11 @@ sed 's/^status:.*/status: public/' blog.md
 date +'%Y-%m-%d %H:%M'
 ```
 
-把上面的执行结果放入到我们的`sed`参数中，修改时间的脚本就成了：
+把上面的执行结果放入到我们的`sed`参数中，修改时间的脚本就成了。
+模板字符串使用双引号，这一点和 php 非常相似。
 
 ```sh
-sed 's/^date:.*/date: $(date +'%Y-%m-%d %H:%M')/' blog.md
+sed "s/^date:.*/date: $(date +'%Y-%m-%d %H:%M')/" blog.md
 ```
 
 到这里，我们要替换内容的功能，基本上都已经实现了。如果我是一个不严肃、懒惰的工程师，下面的内容可能就不会存在了。
@@ -102,8 +103,8 @@ head_end=${head_range_array[1]}
 把得到的变量放到`sed`的脚本里，边界的问题就可以解决了：
 
 ```sh
-sed -i '' '${head_start},${head_end} s/^status:.*/status: public/' blog.md
-sed -i '' '${head_start},${head_end} s/^date:.*/date: $(date +'%Y-%m-%d %H:%M')/' blog.md
+sed -i '' "${head_start},${head_end} s/^status:.*/status: public/" blog.md
+sed -i '' "${head_start},${head_end} s/^date:.*/date: $(date +'%Y-%m-%d %H:%M')/" blog.md
 ```
 （`-i`参数的作用是在原文件操作，结果不输出到终端。）
 
