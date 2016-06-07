@@ -1,6 +1,6 @@
 title: 你的洗牌算法有可能是错的
 date: 2016-05-17 16:36:26
-tags: Javascript, shuffle, sort
+tags: [javascript, shuffle, sort]
 ---
 
 本篇实际上是下面两篇博客的读后总结。如果读得懂，就不用往下看了：

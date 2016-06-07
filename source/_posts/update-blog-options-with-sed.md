@@ -1,6 +1,6 @@
 title: 使用 sed 修改博客配置项
 date: 2016-05-12 16:47:01
-tags: sed, range, replace, shell, array, date
+tags: [sed, range, replace, shell, array, date]
 ---
 
 伸手党请跳至本文最后一条命令。
@@ -20,7 +20,7 @@ sed 's/old-word/new-word/g' file
 title: 使用 sed 修改博文配置
 date: 2016-05-12 16:47
 status: draft
-tags: sed, range, replace, shell, array
+tags: [sed, range, replace, shell, array]
 ---
 
 博文开始
@@ -62,7 +62,7 @@ sed "s/^date:.*/date: $(date +'%Y-%m-%d %H:%M')/" blog.md
 title: 使用 sed 修改博文配置
 date: 2016-05-12 16:47:01
 status: draft
-tags: sed, range, replace, shell, array
+tags: [sed, range, replace, shell, array]
 ---
 
 博文开始

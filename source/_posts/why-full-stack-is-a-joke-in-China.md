@@ -1,6 +1,6 @@
 title: 为什么全栈JavaScript经常被黑
 date: 2016-04-18 17:48:04
-tags: javascript, nodejs, full stack
+tags: [javascript, nodejs, full stack]
 ---
 
 [知乎链接](https://www.zhihu.com/question/43165251/answer/95491432)

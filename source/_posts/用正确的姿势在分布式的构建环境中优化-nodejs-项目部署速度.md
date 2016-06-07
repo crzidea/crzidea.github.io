@@ -1,6 +1,6 @@
 title: 用正确的姿势在分布式的构建环境中优化 nodejs 项目部署速度
 date: 2016-03-29 11:58:44
-tags: node build deploy distribution
+tags: [node, build, deploy, distribution]
 ---
 
 拆解一下标题：
@@ -72,7 +72,7 @@ npm install 的确很慢，但是每次都慢吗？
 ```
 $ time npm install
 ...
- 
+
 real    0m11.685s
 user    0m11.411s
 sys     0m1.110s
@@ -138,7 +138,7 @@ sys     0m1.110s
 ```
 
 > 对构建环境的node版本做了检查
- 
+
 ```
 [2016-03-28 11:44:40] [server1] run: ./bin/post-deploy.sh
 ...
@@ -146,7 +146,7 @@ sys     0m1.110s
 ```
 
 > 每重启一批机器，大概需要花费9秒。
- 
+
 ```
 [2016-03-11 15:28:52] => bower install
 [2016-03-11 15:28:59] bower breakpoint-sass#~2.6.1 ENOTFOUND Request to https://bower.herokuapp.com/packages/breakpoint-sass failed: getaddrinfo ENOTFOUND
