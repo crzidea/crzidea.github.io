@@ -67,19 +67,19 @@ require([], function (){
 				$(".article-inner .fancy-ctn").fancybox();
 			}
 		});
-		
+
 	}
 	//是否开启动画
 	if(yiliaConfig.animate === true){
 
-		require(['/js/jquery.lazyload.js'], function(){
-			//avatar
-			$(".js-avatar").attr("src", $(".js-avatar").attr("lazy-src"));
-			$(".js-avatar")[0].onload = function(){
-				$(".js-avatar").addClass("show");
-			}
-		});
-		
+    require(['/js/jquery.lazyload.js'], function(){
+      //avatar
+      $(".js-avatar").attr("src", $(".js-avatar").attr("lazy-src"));
+      $(".js-avatar")[0].onload = function(){
+        $(".js-avatar").addClass("show");
+      }
+    });
+
 		if(yiliaConfig.isHome === true){
 			//content
 			function showArticle(){
@@ -99,19 +99,19 @@ require([], function (){
 			});
 			showArticle();
 		}
-		
+
 	}
-	
+
 	//是否新窗口打开链接
 	if(yiliaConfig.open_in_new == true){
 		$(".article a[href]").attr("target", "_blank")
 	}
 
 	//随机颜色
-	var colorList = ["#6da336", "#ff945c", "#66CC66", "#99CC99", "#CC6666", "#76becc", "#c99979", "#918597", "#4d4d4d"];
-	var id = Math.ceil(Math.random()*(colorList.length-1));
+	//var colorList = ["#6da336", "#ff945c", "#66CC66", "#99CC99", "#CC6666", "#76becc", "#c99979", "#918597", "#4d4d4d"];
+	//var id = Math.ceil(Math.random()*(colorList.length-1));
 	//PC
-	$("#container .left-col .overlay").css({"background-color": colorList[id],"opacity": .3});
+	//$("#container .left-col .overlay").css({"background-color": colorList[id],"opacity": .3});
 	//移动端
-	$("#container #mobile-nav .overlay").css({"background-color": colorList[id],"opacity": .7});
+	//$("#container #mobile-nav .overlay").css({"background-color": colorList[id],"opacity": .7});
 });
