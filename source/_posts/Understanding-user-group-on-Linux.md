@@ -34,7 +34,7 @@ useradd LOGIN
     ```sh
     usermod -aG GROUP2 LOGIN
     ```
-    **注意**：讲用户添加到组并不会更改用户的默认组。
+    **注意**：将用户添加到组并不会更改用户的默认组。例如用户 A 同时属于 GROUP1、GROUP2，但是 primary group 是 GROUP1，另一个用户 B 使用 GROUP2 创建了一个文件并设置了访问权限为`rw-rw----`，默认情况下，用户 A 是无法访问这个文件的。
 - 使用指定的组进行操作：
     ```sh
     sg GROUP2 [COMMAND]
@@ -56,7 +56,7 @@ sudo visudo
 ### 不使用 sudo 访问 docker
 
 ```sh
-sudo usermod  -aG docker $USER
+sudo usermod -aG docker $USER
 sg docker 'docker ps'
 # 假如你觉得上面这个命令太长，可以不输入`COMMAND`参数
 sg docker
