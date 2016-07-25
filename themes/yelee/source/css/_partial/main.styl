@@ -142,7 +142,7 @@
 		text-transform: uppercase;
 		float:none;
 		height: 140px;
-		margin-left: -12px;
+		margin: 0 auto;
 		text-align: center;
 		display: -webkit-box;
 		-webkit-box-orient: horizontal;
@@ -150,12 +150,21 @@
 		-webkit-box-align: center;
 		li{
 			cursor: default;
+            display: inline-block;
 			a{
 				font-size: 14px;
-				min-width: 300px;
+                display: block;
+                border-color: #ccc;
+                border-style: solid;
+                border-width: 1px;
+                padding: .1em 2em;
 			}
 		}
 	}
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
 	.switch-area{
 		position: relative;
 		width: 100%;
@@ -175,7 +184,6 @@
 		position: absolute;
 		transition: transform .3s ease-in;
 		.social {
-			margin-right:11px;
 			margin-top:10px;
 			text-align: center;
 			li {
@@ -193,7 +201,6 @@
 					color: white;
 				}
 				&:hover {
-					font-size: 24px;
 					opacity: 1;
 				}
 			}

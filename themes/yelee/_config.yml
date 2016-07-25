@@ -2,9 +2,6 @@
 menu:
   主页: /
   列表: /archives/
-  # 随笔: /tags/随笔
-  #标签云: /tags/
-  关于我: /about/
 
 # SubNav
 subnav:
