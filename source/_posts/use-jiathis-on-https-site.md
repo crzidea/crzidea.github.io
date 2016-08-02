@@ -16,4 +16,4 @@ tags: [share, https]
         do_not_track: true // 干掉发往 id.jiathis.com 域的请求
     }
     ```
-3. 禁用分享计数器，把类名包含`jiathis_counter_style`的 HTML 元素删掉即可。可以嘎调发往 i.jiathis.com 域的请求。
+3. 禁用分享计数器，把类名包含`jiathis_counter_style`的 HTML 元素删掉即可。可以干掉发往 i.jiathis.com 域的请求。
