@@ -72,12 +72,12 @@ Collection B:
     {
         "id": 3,
         "collection_a_id": 2,
-        "content": "test c"
+        "content": "test e"
     },
     {
         "id": 4,
         "collection_a_id": 2,
-        "content": "test d"
+        "content": "test f"
     }
 ]
 ```
