@@ -316,3 +316,28 @@
 .post-nav-button {
   display: none;
 }
+#article-nav {
+  display: block;
+  height: auto;
+  padding: .8em 0;
+}
+#article-nav .article-nav-title {
+  display: block;
+  text-align: left;
+  line-height: 1.4em;
+  padding: 0 1em;
+}
+#article-nav .article-nav-title:after,
+#article-nav .article-nav-title:before {
+  content: initial;
+  padding-right: 0.5em;
+  color: #fff;
+  font-weight: bold;
+  font-family: monospace;
+}
+#article-nav #article-nav-newer.article-nav-title:before {
+  content: 'Next: '
+}
+#article-nav #article-nav-older.article-nav-title:before {
+  content: 'Prev: '
+}

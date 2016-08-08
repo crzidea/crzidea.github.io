@@ -1,21 +1,19 @@
-<div class="share">
-    <!-- JiaThis Button BEGIN -->
-    <div class="jiathis_style_32x32">
-        <a class="jiathis_button_douban"></a>
-        <a class="jiathis_button_cqq"></a>
-        <a class="jiathis_button_tsina"></a>
-        <a class="jiathis_button_weixin"></a>
-        <a class="jiathis_button_copy"></a>
-        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+<div class="share ds-share flat"
+    data-thread-key=""
+    data-title="<%= post.title %>"
+    data-images="https://crzidea.com/favicon-96x96.png"
+    data-content=""
+    data-url="https://crzidea.com/<%- url_for(post.path) %>"
+>
+    <div class="ds-share-inline">
+        <ul  class="ds-share-icons-32">
+            <li> <a class="ds-weibo" href="javascript:void(0);" data-service="weibo"></a> </li>
+            <li> <a class="ds-wechat" href="javascript:void(0);" data-service="wechat"></a> </li>
+            <li> <a class="ds-qq" href="javascript:void(0);" data-service="qq"></a> </li>
+            <li> <a class="ds-douban" href="javascript:void(0);" data-service="douban"></a> </li>
+            <li> <a class="ds-twitter" href="javascript:void(0);" data-service="twitter"></a> </li>
+            <li> <a class="ds-facebook" href="javascript:void(0);" data-service="facebook"></a> </li>
+            <li> <a class="ds-linkedin" href="javascript:void(0);" data-service="linkedin"></a> </li>
+        </ul>
     </div>
-    <script type="text/javascript" >
-    var jiathis_config={
-        summary:"",
-        shortUrl:false,
-        hideMore:false,
-        do_not_track: true
-    }
-    </script>
-    <script type="text/javascript" src="//v3-jiathis-com-proxy.crzidea.com/code/jia.js" charset="utf-8"></script>
-    <!-- JiaThis Button END -->
 </div>
