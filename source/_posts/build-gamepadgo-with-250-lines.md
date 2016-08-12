@@ -1,6 +1,6 @@
 title: 从海淘零件谈起如何造一个机器人
 date: 2016-04-12 15:13:31
-tags: [raspberry pi, gopigo, node, javascript, gamepad]
+tags: [raspberry pi, gopigo, nodejs, javascript, gamepad]
 ---
 
 ![从海淘零件谈起如何造一个机器人](/img/从海淘零件谈起如何造一个机器人.001.jpeg)

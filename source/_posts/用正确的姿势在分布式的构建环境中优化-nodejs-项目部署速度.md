@@ -1,6 +1,6 @@
 title: 用正确的姿势在分布式的构建环境中优化 nodejs 项目部署速度
 date: 2016-03-29 11:58:44
-tags: [node, build, deploy, distribution]
+tags: [nodejs, build, deploy, distribution]
 ---
 
 拆解一下标题：

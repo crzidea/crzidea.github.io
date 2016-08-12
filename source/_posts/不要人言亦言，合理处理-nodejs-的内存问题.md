@@ -1,6 +1,6 @@
 title: 不要人言亦言，合理处理 nodejs 的内存问题
 date: 2016-02-24 15:21:09
-tags: [node, javascript, memory leak]
+tags: [nodejs, javascript, memory leak]
 ---
 
 很多人都说 nodejs 的 GC 特别渣，我也觉得渣。例如：
