@@ -4,7 +4,7 @@ tags: [nodejs, koa, sequelize, RESTful, 企业平台, 前端]
 ---
 
 
-> 本文以在[美团点评技术博客](http://tech.meituan.com/koa-restql.html)发表，谢绝转载！
+> 本文已在[美团点评技术博客](http://tech.meituan.com/koa-restql.html)发表，谢绝转载！
 
 > koa-restql 已经在 [github][koa-restql] 开源并在 [npm][koa-restql-npm] 发布。感兴趣的同学可以前往围观一下。欢迎 Pull Request，同时热烈欢迎 Star。
 
