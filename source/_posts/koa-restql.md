@@ -76,20 +76,20 @@ tags: [nodejs, koa, sequelize, RESTful, 企业平台, 前端]
 
 支持的 HTTP 方法：
 
-HTTP verb | CRUD          |
---------- | ------------- |
-GET       | Read          |
-POST      | Create        |
-PUT       | Create/Update |
-DELETE    | Delete        |
+HTTP verb | CRUD
+--------- | -------------
+GET       | Read
+POST      | Create
+PUT       | Create/Update
+DELETE    | Delete
 
 
 支持的带有 body 的 HTTP 方法：
 
-HTTP verb | List         | Single |
---------- | ------------ | ------ |
-POST      | Array/Object | ×      |
-PUT       | Array/Object | Object |
+HTTP verb | List         | Single
+--------- | ------------ | ------
+POST      | Array/Object | ×
+PUT       | Array/Object | Object
 
 **说明**：
 
