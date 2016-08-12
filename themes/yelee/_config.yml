@@ -68,8 +68,9 @@ tagcloud: true
 #开启——
 friends:
   Hexo: https://hexo.io
-  GitHub: https://pages.github.com/
+  GitHub: https://github.com/
   MOxFIVE: http://moxfive.xyz/
+  美团点评技术团队: http://tech.meituan.com/
 
 #是否开启“关于我”。
 #不开启——
