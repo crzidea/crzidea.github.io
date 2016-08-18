@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+/**
+ * Usage:
+ *  PORT=[local_port] peer [remote_host] [remote_port]
+ * Example:
+ *  PORT=12345 ./peer 127.0.0.1 12346
+ */
+
+const dgram = require('dgram');
+const readline = require('readline');
+
+var host = process.argv[process.argv.length - 2]
+var port = process.argv[process.argv.length - 1]
+const socket = dgram.createSocket('udp4');
+socket.bind(process.env.PORT, () => {
+  var address = socket.address();
+  console.log(`listening ${address.address}:${address.port}`);
+  rl.prompt();
+  socket.send(`I'm using local port ${address.port}`, port, host)
+})
+socket.on('message', (message, rinfo) => {
+  rl.clearLine()
+  console.log(`${rinfo.address}:${rinfo.port}> ${message.toString()}`);
+  rl.prompt();
+})
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  prompt: 'input> '
+});
+rl.on('line', (input) => {
+  socket.send(input, port, host, () => { })
+  rl.prompt();
+})
