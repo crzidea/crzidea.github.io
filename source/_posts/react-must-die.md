@@ -40,7 +40,7 @@ tags: [React, javascript]
 
 > 民间：想加班就用 React
 
-为了说明 React 的开发效率，不放点开两个链接看一下代码行数。下面两个链接都实现了一个聊天应用，完全一样的功能：
+为了说明 React 的开发效率，不妨点开两个链接看一下代码行数。下面两个链接都实现了一个聊天应用，完全一样的功能：
 
 * [React 版本：187 行](https://github.com/rethinkdb/horizon/blob/next/examples/react-chat-app/dist/app.jsx)
 * [Riot 版本：53 行](https://github.com/rethinkdb/horizon/blob/next/examples/riotjs-chat-app/dist/chat.tag)
@@ -49,4 +49,4 @@ tags: [React, javascript]
 
 ## 感谢 React
 
-虽然我并不认同 React 的一些解决问题的方法，甚至觉得它「没有前途」，但是 React 对行业做出的贡献是总所周知的。最后还是感谢 facebook 工程师的贡献。
+虽然我并不认同 React 的一些解决问题的方法，甚至觉得它「没有前途」，但是 React 对行业做出的贡献是众所周知的。最后还是感谢 facebook 工程师的贡献。
