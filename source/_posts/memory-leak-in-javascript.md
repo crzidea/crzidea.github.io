@@ -169,3 +169,4 @@ for (var i = 0, l = 16; i < l; i++) {
 * 使用`--trace_gc`参数查看 GC 的活动情况。
 * 使用 [node-inspector](https://github.com/node-inspector/node-inspector) 的内存快照功能，可以分析出不正常的内存使用。
 * 当且仅当 node 进程需要**给系统中其他进程让出内存**时，使用`--expose_gc`参数，手动调用`gc()`。我仍然相信绝大多数时候你不需要使用它。
+* 除了上述提到的几个示例外，[这里还有一些JavaScript内存泄漏的典型示例](https://github.com/crzidea/crzidea.github.io/tree/edit/example/memory-leak)。
