@@ -15,7 +15,6 @@ lxrun /?
 - `/` => `%localappdata%\Lxss\rootfs`
 - `/mnt/c` => `C:\`
 
-
 ## 新建文件默认权限 - umask
 
 ```sh
@@ -51,7 +50,18 @@ sudo apt install -y inotify-tools
 - 在 bash 环境下修改 /mnt/c 中的文件，也可使用这些事件。
 - ~~在 Windows 环境中修改文件，不会触发事件~~。
 
-## 互相访问
+## 使用 bash 启动 Windows 应用程序
+
+```sh
+export PATH=$PATH:/mnt/c/Windows/System32
+notepad.exe
+```
+
+**注意**：被调用的 Windows 应用程序可能无法正确识别传入的路径参数，例如：
+
+```sh
+explorer.exe / # 无法正确识别 `/` 路径
+```
 
 ## 个性化终端 - bash.exe
 
