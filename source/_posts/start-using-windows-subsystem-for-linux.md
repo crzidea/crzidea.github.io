@@ -126,11 +126,7 @@ explorer.exe / # 无法正确识别 `/` 路径
 
 ## 个性化终端 - bash.exe
 
-- 颜色
-- 字体
-- 光标
-  - 终端光标
-  - vi 光标
+bash.exe 终端的样式（颜色、字体、光标）可以通过注册表修改，但是可以修改的项目有限。
 
 ## 中文字符
 
@@ -138,11 +134,17 @@ explorer.exe / # 无法正确识别 `/` 路径
 
 ## 个性化终端 - mintty
 
+如果觉得默认的 bash.exe 终端太挫了，可以用 mintty + wslbridge 的组合代替。
+
 ### 安装
+
+mintty 作者建了一个 wsltty 的项目专门用于发布用于 WSL 的终端。但是亲测后发现 Windows 升级之后，之前发布的编译好的终端已经无法运行了。所以需要自己动手将下面的几个玩具组合起来。
 
 - mintty 需要从 [cygwin64](cygwin64) 提取
 - [wsltty](https://github.com/mintty/wsltty)
 - [wslbridge](https://github.com/rprichard/wslbridge/releases)
+
+将所有文件都解压到`C:\cygwin64\bin`中，运行`install.bat`即可。
 
 ### 配置文件
 
@@ -151,6 +153,11 @@ explorer.exe / # 无法正确识别 `/` 路径
 ```
 %localappdata%\wsltty\home\%username%\
 ```
+
+## 日常开发
+
+这篇博客其实就是在 WSL 的 vim 中编辑的，并且使用 node 创建了一个 web
+服务器。所以使用 WSL 应对日常的开发，应该是没有问题的。
 
 ## 参考资料
 
