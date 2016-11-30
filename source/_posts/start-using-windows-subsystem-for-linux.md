@@ -6,14 +6,28 @@ tags: [Windows, WSL, Bash, tmux, mintty, wsltty]
 
 ## 安装/卸载/重置
 
+### 准备
+
+- 准备一台安装了 Windows 10 的 PC，并将系统升级到最新版本。
+- （可选，但是建议）安装 Fast Ring 的 Insider Preview 版本更新。
+- 在`Update & security`配置中，开启`Developer mode`。
+- 在`Turn Windows features on or off`中，开启`Windows Subsystem for Linux (Beta)`。
+- 运行`bash`命令。
+
+### 其他操作
+
+在 **powershell** 或者 **cmd** 中执行下面的命令，可以查看 安装/卸载/重置 WSL 相关的参数。
+
 ```ps
 lxrun /?
 ```
 
 ## 目录结构
 
-- `/` => `%localappdata%\Lxss\rootfs`
-- `/mnt/c` => `C:\`
+WSL 路径 | Windows 路径
+---------|------------
+ /       | %localappdata%\Lxss\rootfs
+ /mnt/c  | C:\
 
 ## 新建文件默认权限 - umask
 
@@ -53,6 +67,34 @@ rm test && touch test && ll test
 -rw-r--r-- 1 crzidea crzidea 0 Nov 30 11:45 test
 ```
 
+另外，通过 `/mnt/` 路径访问文件时，文件权限大部分为 `rwx`：
+
+```sh
+ll /mnt/c
+```
+
+输出结果：
+
+```
+drwxrwxrwx 0 root root      0 Nov 30 11:29 cygwin64
+-????????? ? ?    ?         ?            ? hiberfil.sys
+drwxrwxrwx 0 root root      0 Nov 19 13:53 Intel
+drwxrwxrwx 0 root root      0 Nov 30 12:40 OneDriveTemp
+-????????? ? ?    ?         ?            ? pagefile.sys
+d--------- 0 root root      0 Nov 18 21:27 PerfLogs
+drwxrwxrwx 0 root root      0 Nov 19 14:33 ProgramData
+dr-xr-xr-x 0 root root      0 Nov 19 13:53 Program Files
+dr-xr-xr-x 0 root root      0 Nov 19 13:53 Program Files (x86)
+dr-xr-xr-x 0 root root      0 Nov 19 13:55 Recovery
+drwxrwxrwx 0 root root      0 Nov 19 14:47 $RECYCLE.BIN
+-????????? ? ?    ?         ?            ? swapfile.sys
+drwxrwxrwx 0 root root      0 Nov 18 21:33 $SysReset
+d--------- 0 root root      0 Nov 30 10:39 System Volume Information
+dr-xr-xr-x 0 root root      0 Nov 19 14:48 Users
+dr-xr-xr-x 0 root root      0 Nov 30 10:45 Windows
+dr-xr-xr-x 0 root root      0 Nov 30 12:33 $WINDOWS.~BT
+drwxrwxrwx 0 root root      0 Nov 19 19:47 Windows.old
+```
 ## tmux 相关
 
 
