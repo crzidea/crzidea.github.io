@@ -1,8 +1,8 @@
+---
 title: 浅尝 Windows Subsystem for Linux
 date: 2016-11-30 11:00
 tags: [Windows, WSL, Bash, tmux, mintty, wsltty]
 ---
-
 
 ## 安装/卸载/重置
 
