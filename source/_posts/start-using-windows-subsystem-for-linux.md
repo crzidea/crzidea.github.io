@@ -19,14 +19,15 @@ tags: [Windows, WSL, Bash, tmux, mintty, wsltty]
 
 - 颜色
 - 字体
-		c. 光标
-			i. 终端光标
-			ii. vi 光标
+- 光标
+  - 终端光标
+  - vi 光标
 
 ## 中文字符
-		a. bash.exe
-		b. ConEmu
-		c. mintty
+
+- bash.exe
+- ConEmu
+- mintty
 
 ## 个性化终端 - mintty
 
