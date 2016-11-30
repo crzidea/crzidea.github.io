@@ -7,12 +7,12 @@ tags: [Windows, WSL, Bash, tmux, mintty, wsltty]
 ## 安装/卸载/重置
 
 ```ps
-lxrun.exe /?
+lxrun /?
 ```
 
 ## 目录结构
 
-- `/` => ``
+- `/` => `%localappdata%\Lxss\rootfs`
 - `/mnt/c` => `C:\`
 
 
