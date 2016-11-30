@@ -73,4 +73,6 @@ sudo apt install -y inotify-tools
 - [wsltty](https://github.com/mintty/wsltty)
 - [wslbridge](https://github.com/rprichard/wslbridge/releases)
 
-## 建议
+## 参考资料
+
+- [Bash on Ubuntu on Windows - Release Notes](https://msdn.microsoft.com/en-us/commandline/wsl/release_notes)
