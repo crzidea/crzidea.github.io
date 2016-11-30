@@ -6,8 +6,14 @@ tags: [Windows, WSL, Bash, tmux, mintty, wsltty]
 
 ## 安装/卸载/重置
 
-## 启动目录
+```ps
+lxrun.exe /?
+```
 
+## 目录结构
+
+- `/` => ``
+- `/mnt/c` => `C:\`
 
 
 ## 新建文件默认权限 - umask
@@ -37,7 +43,11 @@ rm test && touch test && ll test
 ```
 
 ## 文件系统事件 - inotify
-	
+
+```sh
+sudo apt install -y inotify-tools
+```
+
 - 在 bash 环境下修改 /mnt/c 中的文件，也可使用这些事件。
 - ~~在 Windows 环境中修改文件，不会触发事件~~。
 
