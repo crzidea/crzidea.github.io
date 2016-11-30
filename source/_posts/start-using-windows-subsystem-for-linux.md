@@ -97,15 +97,19 @@ drwxrwxrwx 0 root root      0 Nov 19 19:47 Windows.old
 ```
 ## tmux 相关
 
+目前 WSL 可以支持绝大多数的 tmux 操作，这也是 WSL 发布时拿出来秀肌肉的亮点。但是测试中发现使用快捷键（默认`prefix + "`）对 tmux 分屏时，无法保留当前的路径。在终端中运行`tmux split`不会有这个问题。
 
 ## 文件系统事件 - inotify
 
 ```sh
 sudo apt install -y inotify-tools
 ```
+WSL 的早期版本无法使用 inotify 工具，也无法获取文件变动的事件。但是目前 Insider Preview 版本已经实现了功能，这些这也是建议用户升级到 Insider Preview Fast Ring 的原因之一。
+
+另外由于 WSL 文件系统的特殊性，需要注意：
 
 - 在 bash 环境下修改 /mnt/c 中的文件，也可使用这些事件。
-- ~~在 Windows 环境中修改文件，不会触发事件~~。
+- 在 Windows 环境中修改文件，不会触发事件。
 
 ## 使用 bash 启动 Windows 应用程序
 
