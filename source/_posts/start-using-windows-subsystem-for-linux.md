@@ -49,8 +49,8 @@ touch test && ll test
 umask # 输出结果为 0000
 ```
 
-要解决这个问题，需要在 bashrc 中手动加入下面一行命令
-：
+要解决这个问题，需要在 bashrc 中手动加入下面一行命令：
+
 ```sh
 umask 022
 ```
@@ -95,6 +95,7 @@ dr-xr-xr-x 0 root root      0 Nov 30 10:45 Windows
 dr-xr-xr-x 0 root root      0 Nov 30 12:33 $WINDOWS.~BT
 drwxrwxrwx 0 root root      0 Nov 19 19:47 Windows.old
 ```
+
 ## tmux 相关
 
 目前 WSL 可以支持绝大多数的 tmux 操作，这也是 WSL 发布时拿出来秀肌肉的亮点。但是测试中发现使用快捷键（默认`prefix + "`）对 tmux 分屏时，无法保留当前的路径。在终端中运行`tmux split`不会有这个问题。
@@ -124,19 +125,31 @@ notepad.exe
 explorer.exe / # 无法正确识别 `/` 路径
 ```
 
-## 个性化终端 - bash.exe
+## 使用 Windows 应用程序监控 WSL 进程
 
-bash.exe 终端的样式（颜色、字体、光标）可以通过注册表修改，但是可以修改的项目有限。
+通过 WSL 启动的进程可以在 Windows 中访问到。例如在`powershell`中执行：
+
+```ps
+get-process
+```
+
+可以从输出列表中查找到从 WSL 启动的 bash、ssh、node 之类的进程。
 
 ## 中文字符
 
 默认的 bash 命令行程序可能会无法正确显示中文，建议使用 mintty/wsltty 作为日常使用的终端应用程序。
 
-## 个性化终端 - mintty
+## 个性化终端
+
+### bash.exe
+
+bash.exe 实际上是一个`Windows Console Application`，终端的样式（颜色、字体、光标）可以通过注册表修改，但是可以修改的项目有限。
+
+### mintty
 
 如果觉得默认的 bash.exe 终端太挫了，可以用 mintty + wslbridge 的组合代替。
 
-### 安装
+#### 安装
 
 mintty 作者建了一个 wsltty 的项目专门用于发布用于 WSL 的终端。但是亲测后发现 Windows 升级之后，之前发布的编译好的终端已经无法运行了。所以需要自己动手将下面的几个玩具组合起来。
 
@@ -146,7 +159,7 @@ mintty 作者建了一个 wsltty 的项目专门用于发布用于 WSL 的终端
 
 将所有文件都解压到`C:\cygwin64\bin`中，运行`install.bat`即可。
 
-### 配置文件
+#### 配置文件
 
 下载[已经配置好的 Monokai 样式文件](https://github.com/crzidea/confbook/blob/master/.minttyrc)放入下面的目录，重新打开 mintty 即可：
 
@@ -156,9 +169,9 @@ mintty 作者建了一个 wsltty 的项目专门用于发布用于 WSL 的终端
 
 ## 日常开发
 
-这篇博客其实就是在 WSL 的 vim 中编辑的，并且使用 node 创建了一个 web
-服务器。所以使用 WSL 应对日常的开发，应该是没有问题的。
+这篇博客其实就是在 WSL 的 vim 中编辑的，并且使用 node 创建了一个 web 服务器。所以使用 WSL 应对日常的开发，应该是没有问题的。
 
 ## 参考资料
 
 - [Bash on Ubuntu on Windows - Release Notes](https://msdn.microsoft.com/en-us/commandline/wsl/release_notes)
+- [Track or report an issue](https://github.com/Microsoft/BashOnWindows/issues)
