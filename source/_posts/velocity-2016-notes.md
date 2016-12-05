@@ -124,7 +124,7 @@ tags: [velocity, web, performace, ops, micro service, database]
     - 容器跨主机互联
     - 云盘
 - 一板斧：去状态、可扩展（都已经喊得烂了，不记了）
-- 二板斧：容器话、可编排
+- 二板斧：容器化、可编排
     - Kuber 系技术栈实现快速编排无状态的应用，相当于分布式的 docker-compose，
 - 三板斧：DevOPS、可迭代
     - 主要讲的多个环境自动选择配置选项。基本上靠 CI、CD、kuber 系的 compose 功能实现。
