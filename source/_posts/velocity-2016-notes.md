@@ -84,12 +84,12 @@ tags: [velocity, web, performace, ops, micro service, database]
     - 还没开始做。
     - 说要通过机器学习判断特征，这个比较扯，比如 1000 个应用，999 个被下线了，机器学习是不是就自动下线最后一个应用呢？要是最后一个应用不能被下线怎么办？
 
-## 主题发言 测量服务的可运维性(Measure the operability of your service)
+## 主题发言 测量服务的可运维性 (Measure the operability of your service)
 
 - 讲师的开场介绍好像是在被面试一样。
 - 讲师的表达不太好。
 
-## Swarm优化：从单实例管理1000 nodes到30000 nodes
+## Swarm优化：从单实例管理 1000 nodes 到 30000 nodes
 
 - 选择 Swarm 而不是其他方案的原因是因为对 docker 本身的协议更熟悉，方便深度定制。
 - 提到阿里采用的大部分开源软件都是经过深度定制的。
