@@ -1,5 +1,9 @@
 <%- partial('_partial/head') %>
 <body>
+
+  <!-- 分享时显示的图片 -->
+  <img style="display:none" src="<%- theme.favicon %>" />
+
   <div id="container">
     <div class="left-col">
     <%- partial('_partial/left-col', null, {cache: !config.relative_link}) %>
@@ -11,5 +15,6 @@
     </div>
     <%- partial('_partial/after-footer') %>
   </div>
+
 </body>
 </html>
