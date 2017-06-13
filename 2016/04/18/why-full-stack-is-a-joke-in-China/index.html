@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>为什么全栈JavaScript经常被黑 | Crzidea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="知乎链接 作为一个后端工程师，在前端TC晋升到P6，也想来凑个热热闹。而且我们组的同学，也全部是非常靠谱的全栈，招聘要求也是按照全栈的标准来，比较严格的。 内容预警，写的东西比较尖锐或者刻薄，但我认为是比较客观的，所以敢冒着得罪人的风险把这些写下来。  先来回答“为什么全栈会被黑？”很简单，因为大多数的全栈都很菜。菜到什么程度这里也不用表述了，估计在大家的认知里，这些都可以脑补。有的连JS都没摸熟">
+<meta name="keywords" content="nodejs,javascript,full stack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么全栈JavaScript经常被黑">
+<meta property="og:url" content="https://crzidea.com/2016/04/18/why-full-stack-is-a-joke-in-China/index.html">
+<meta property="og:site_name" content="Crzidea">
+<meta property="og:description" content="知乎链接 作为一个后端工程师，在前端TC晋升到P6，也想来凑个热热闹。而且我们组的同学，也全部是非常靠谱的全栈，招聘要求也是按照全栈的标准来，比较严格的。 内容预警，写的东西比较尖锐或者刻薄，但我认为是比较客观的，所以敢冒着得罪人的风险把这些写下来。  先来回答“为什么全栈会被黑？”很简单，因为大多数的全栈都很菜。菜到什么程度这里也不用表述了，估计在大家的认知里，这些都可以脑补。有的连JS都没摸熟">
+<meta property="og:updated_time" content="2017-06-13T04:13:15.164Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="为什么全栈JavaScript经常被黑">
+<meta name="twitter:description" content="知乎链接 作为一个后端工程师，在前端TC晋升到P6，也想来凑个热热闹。而且我们组的同学，也全部是非常靠谱的全栈，招聘要求也是按照全栈的标准来，比较严格的。 内容预警，写的东西比较尖锐或者刻薄，但我认为是比较客观的，所以敢冒着得罪人的风险把这些写下来。  先来回答“为什么全栈会被黑？”很简单，因为大多数的全栈都很菜。菜到什么程度这里也不用表述了，估计在大家的认知里，这些都可以脑补。有的连JS都没摸熟">
+  
+    <link rel="alternative" href="/atom.xml" title="Crzidea" type="application/atom+xml">
+  
+  
+  <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <!-- 分享时显示的图片 -->
+  <div style='display:none;'>
+      <img src="/favicon.png" />
+  </div>
+
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.png" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">crzidea.com</a></h1>
+		</hgroup>
+
+		
+		
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">列表</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:micro-tech@foxmail.com" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/crzidea" title="GitHub"></a></li>
+					        
+								<li id="新浪微博"><a class="新浪微博" target="_blank" href="http://weibo.com/crzidea" title="新浪微博"></a></li>
+					        
+								<li id="QQ"><a class="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=133683737&site=qq&menu=yes" title="QQ"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Bash/" style="font-size: 10px;">Bash</a> <a href="/tags/FEDAY/" style="font-size: 10px;">FEDAY</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/WSL/" style="font-size: 10px;">WSL</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/build/" style="font-size: 10px;">build</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/date/" style="font-size: 10px;">date</a> <a href="/tags/deploy/" style="font-size: 10px;">deploy</a> <a href="/tags/distribution/" style="font-size: 10px;">distribution</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/docker-registry-mirror/" style="font-size: 10px;">docker registry mirror</a> <a href="/tags/full-stack/" style="font-size: 10px;">full stack</a> <a href="/tags/gamepad/" style="font-size: 10px;">gamepad</a> <a href="/tags/gopigo/" style="font-size: 10px;">gopigo</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/koa/" style="font-size: 10px;">koa</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/memory-leak/" style="font-size: 10px;">memory leak</a> <a href="/tags/micro-service/" style="font-size: 10px;">micro service</a> <a href="/tags/mintty/" style="font-size: 10px;">mintty</a> <a href="/tags/nodejs/" style="font-size: 20px;">nodejs</a> <a href="/tags/ops/" style="font-size: 10px;">ops</a> <a href="/tags/performace/" style="font-size: 10px;">performace</a> <a href="/tags/range/" style="font-size: 10px;">range</a> <a href="/tags/raspberry-pi/" style="font-size: 10px;">raspberry pi</a> <a href="/tags/replace/" style="font-size: 10px;">replace</a> <a href="/tags/replication/" style="font-size: 10px;">replication</a> <a href="/tags/rethinkdb/" style="font-size: 10px;">rethinkdb</a> <a href="/tags/scaling/" style="font-size: 10px;">scaling</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/sequelize/" style="font-size: 10px;">sequelize</a> <a href="/tags/sharding/" style="font-size: 10px;">sharding</a> <a href="/tags/share/" style="font-size: 10px;">share</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/shuffle/" style="font-size: 10px;">shuffle</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/systemd/" style="font-size: 10px;">systemd</a> <a href="/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/tags/user-group/" style="font-size: 10px;">user group</a> <a href="/tags/velocity/" style="font-size: 10px;">velocity</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wsltty/" style="font-size: 10px;">wsltty</a> <a href="/tags/企业平台/" style="font-size: 10px;">企业平台</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a>
+					</div>
+				</section>
+				
+
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">GitHub</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://tech.meituan.com/">美团点评技术团队</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">crzidea.com</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+                
+                <img src="/img/avatar.png" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+                
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">crzidea.com</a></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">列表</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:micro-tech@foxmail.com" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/crzidea" title="GitHub"></a></li>
+					        
+								<li id="新浪微博"><a class="新浪微博" target="_blank" href="http://weibo.com/crzidea" title="新浪微博"></a></li>
+					        
+								<li id="QQ"><a class="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=133683737&site=qq&menu=yes" title="QQ"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-why-full-stack-is-a-joke-in-China" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/18/why-full-stack-is-a-joke-in-China/" class="article-date">
+  	<time datetime="2016-04-18T09:48:04.000Z" itemprop="datePublished">2016-04-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      为什么全栈JavaScript经常被黑
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/full-stack/">full stack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p><a href="https://www.zhihu.com/question/43165251/answer/95491432" target="_blank" rel="external">知乎链接</a></p>
+<p>作为一个后端工程师，在前端TC晋升到P6，也想来凑个热热闹。而且我们组的同学，也全部是非常靠谱的全栈，招聘要求也是按照全栈的标准来，比较严格的。</p>
+<p>内容预警，写的东西比较尖锐或者刻薄，但我认为是比较<strong>客观</strong>的，所以敢冒着得罪人的风险把这些写下来。</p>
+<ul>
+<li><strong><em>先来回答“为什么全栈会被黑？”</em></strong><br>很简单，因为<strong>大多数的全栈都很菜</strong>。菜到什么程度这里也不用表述了，估计在大家的认知里，这些都可以脑补。有的连JS都没摸熟，做了一个前后端的WEB项目，写了前后端的代码，就在简历上自称全栈了。<br>这些“菜”的工程师直接拉低了全栈工程师的口碑，以至于每次我在别人面前提到我们团队的工作职责时，我都要特别强调好几遍“是真全栈，不要怀疑。”<br>但是我要强调的是，“大多数”不代表“全部”，和我一起工作的同事，都是按照非常严格的要求筛选出来的，他们是“真正的全栈工程师”。</li>
+<li><strong><em>那么问题就变成了“为什么大多数全栈都很菜？”</em></strong><br>这个问题也很简单，就两个原因：<ol>
+<li>没机会学习全栈的所有技能。那我们再问为什么没机会？<ol>
+<li>即使是打着“招聘全栈工程师”的旗号的一些公司，他们把人招过来之后也是把全栈当前端用。</li>
+<li>即便公司想用，但是他们的技术负责人也不一定不会用这种技能的人，于是给他们分配的任务还只是前端的，接触不到其他的全栈技能。</li>
+</ol>
+</li>
+<li>不知道该怎么学习全栈技能。那我们再问为什么不知道该怎么学？<ol>
+<li>上面也说了，leader不会用人，不会带人，而leader又是团队的榜样，leader都弄不明白的事情，其他人弄明白了，其他人不成leader了吗？这种现象不太可能发生。</li>
+<li>自身动力不足，或者学习能力不够。总之自身因素也是有的。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><strong><em>那么，上边提到的对全栈的要求是什么呢？</em></strong><br>我的答案要比列举的技能树要简单的多：<strong>熟悉Linux、熟悉HTTP、熟悉浏览器提供的各种API，并能活用以上三种技能</strong>，完了。</li>
+<li>为什么会有这种要求？<ul>
+<li>Linux，学习的再多也不为过。原因：</li>
+</ul>
+<ol>
+<li>在一个全栈的团队里面，负责和专业运维沟通的人，必定也是全栈。</li>
+<li>在一个全栈的团队里面，负责后端架构、性能优化、高可用、负载均衡设计的人，必定也是全栈。而如果熟悉Linux，对这部分工作内容会有非常大的帮助。有些需要自己解决的问题，可能用Linux中的一些既有功能就可以简单暴力的解决，虽然很暴力但是很有效。</li>
+<li>以上都是讲对后端的作用，其实前端也是离不开Linux的，虽然大部分的前端不用Linux。举一个例子，大家都在用fs.watch()的API，或者nodemon、webpack或者其他构建工具的文件监视工具，但是有几个前端知道用shell怎么实现这种文件监视的功能？那我要反问一句，连文件监视功能是怎么实现的都不知道，怎么敢自称“工程师”？或者“前端工程师”？</li>
+</ol>
+<ul>
+<li>HTTP很重要，原因大家都知道的，我就不多说了。但是我要强调的是，学HTTP，对于学习的人来讲，价值更大的是，学习学习协议的方法。<br>就个人的经历而言，除HTTP协议之外，先后学习过engine.io、kafka、redis、amqp、mqtt的协议，其中kafka、redis中大部分的协议内容部是 request-response 的（kafka全部都是，redis中pub-sub不是，答主是kafka-node的作者之一，同时也实现过redis文本协议的parser）。所以如果学习过HTTP，对于学习其他的协议是很有帮助的。</li>
+<li>浏览器提供的各种API，这个技能不光是全栈的，而是所有前端应该去学习的，原因我也不赘述。这里说的API，不光是HTML、CSS，存储、网络、传感器、绘图等都应该是前端的技能范围。面试的时候我会想起来什么问什么。但我不会根据这个来判断被面试者的能力。因为下面一点更重要。</li>
+<li>“活用以上三种技能”。我再装个大13，前后端分离的项目，大家会怎么定义后端接口的地址？不许修改HOST，不许安装浏览器插件。就这样一个简单的问题，就可能涉及到Linux环境变量或localStorage的问题。这才是全栈最核心的技能，<strong>既要善学，也要善用</strong>。</li>
+</ul>
+</li>
+<li><strong><em>为什么不需要太了解编程语言？</em></strong><br>语言就是工具，而对于能活学善用的人，你需要告诉他工具怎么用吗？如果不用的话，何必要问呢？我面试过一个应届生，ES6中的generator的API，他根本不了解，但是我告诉他API之后，他就能很快的写出类似co的功能。</li>
+<li><strong><em>为什么不需要太了解数据库？</em></strong><br>看到评论中有朋友说全栈技能应该包括数据库、神经网络等，我觉得这不是必选项。有的项目用mongodb有的用rethinkdb，数据库在这些项目里就是一个框，在外面看来就是能存能查，保证可扩展和高可用就行，框内是什么大部分人应该都不清楚。有个数据库用blockchain的原理，可以实现百万的并发写入，你会去看blockchain是什么吗？那还装这个13干什么。<br>至于机器学习，额，大家都懂。对于有兴趣的人，会就会了，不值得炫耀，多在上面花点儿时间罢了。但是多数时候用不上。</li>
+<li><strong><em>最后，我要得罪一下另一类人群了：写Java的人就没有菜的吗？</em></strong><br>有，当然有，比写JS的菜的更多。甚至是我列出来的<strong>三种基本技能，一种都不能达标的大有人在</strong>。</li>
+</ul>
+<p>最后，还是希望励志成为“全栈工程师”的同学们不要放弃，坚持自己的学习道路。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <div id="article-nav-newer" class="article-nav-title">
+      <a href="/2016/05/12/update-blog-options-with-sed/">
+        使用 sed 修改博客配置项
+      </a>
+    </div>
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2016/04/12/build-gamepadgo-with-250-lines/">
+        从海淘零件谈起如何造一个机器人
+      </a>
+    </div>
+  
+</nav>
+
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+
+<div class="share ds-share flat"
+    data-thread-key=""
+    data-title="为什么全栈JavaScript经常被黑"
+    data-images="https://crzidea.com/favicon-96x96.png"
+    data-content=""
+    data-url="https://crzidea.com/2016/04/18/why-full-stack-is-a-joke-in-China/"
+>
+    <div class="ds-share-inline">
+        <ul  class="ds-share-icons-32">
+            <li> <a class="ds-weibo" href="javascript:void(0);" data-service="weibo"></a> </li>
+            <li> <a class="ds-wechat" href="javascript:void(0);" data-service="wechat"></a> </li>
+            <li> <a class="ds-qq" href="javascript:void(0);" data-service="qq"></a> </li>
+            <li> <a class="ds-douban" href="javascript:void(0);" data-service="douban"></a> </li>
+            <li> <a class="ds-twitter" href="javascript:void(0);" data-service="twitter"></a> </li>
+            <li> <a class="ds-facebook" href="javascript:void(0);" data-service="facebook"></a> </li>
+            <li> <a class="ds-linkedin" href="javascript:void(0);" data-service="linkedin"></a> </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016/04/18/why-full-stack-is-a-joke-in-China/" data-title="为什么全栈JavaScript经常被黑" data-url="https://crzidea.com/2016/04/18/why-full-stack-is-a-joke-in-China/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"crzidea"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#ds-thread" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    
+    <div  class="post-nav-button">
+    <a href="/2016/05/12/update-blog-options-with-sed/" title="上一篇: 使用 sed 修改博客配置项">
+    <i class="fa fa-angle-left"></i>
+    </a>
+    <a href="/2016/04/12/build-gamepadgo-with-250-lines/" title="下一篇: 从海淘零件谈起如何造一个机器人">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: false,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+    
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2017 crzidea.com
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+      <span id="busuanzi_container_site_pv" style='display:none'>
+        <span id="site-visit" >本站到访数: 
+        <span id="busuanzi_value_site_uv"></span>
+        </span>
+      </span>
+      <span id="busuanzi_container_page_pv" style='display:none'>
+        <span id="page-visit">, 本页阅读量: 
+        <span id="busuanzi_value_page_pv"></span>
+        </span>
+      </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+  <style>
+    body {
+      background: lightgray;
+    }
+    #container .left-col {
+      background: white;
+    }
+    .article-inner {
+      background: white;
+    }
+    .post-nav-button {
+      background: #ececec;
+    }
+    #header .header-nav .social #GitHub {
+      background-color: #bfd3ec;
+    }
+  </style>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-81807912-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  </div>
+
+</body>
+</html>

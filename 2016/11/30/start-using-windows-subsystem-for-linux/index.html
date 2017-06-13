@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>浅尝 Windows Subsystem for Linux | Crzidea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装/卸载/重置准备 准备一台安装了 Windows 10 的 PC，并将系统升级到最新版本。 （可选，但是建议）安装 Fast Ring 的 Insider Preview 版本更新。 在Update &amp;amp; security配置中，开启Developer mode。 在Turn Windows features on or off中，开启Windows Subsystem for Linu">
+<meta name="keywords" content="Windows,WSL,Bash,tmux,mintty,wsltty">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅尝 Windows Subsystem for Linux">
+<meta property="og:url" content="https://crzidea.com/2016/11/30/start-using-windows-subsystem-for-linux/index.html">
+<meta property="og:site_name" content="Crzidea">
+<meta property="og:description" content="安装/卸载/重置准备 准备一台安装了 Windows 10 的 PC，并将系统升级到最新版本。 （可选，但是建议）安装 Fast Ring 的 Insider Preview 版本更新。 在Update &amp;amp; security配置中，开启Developer mode。 在Turn Windows features on or off中，开启Windows Subsystem for Linu">
+<meta property="og:updated_time" content="2017-06-13T04:13:15.147Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅尝 Windows Subsystem for Linux">
+<meta name="twitter:description" content="安装/卸载/重置准备 准备一台安装了 Windows 10 的 PC，并将系统升级到最新版本。 （可选，但是建议）安装 Fast Ring 的 Insider Preview 版本更新。 在Update &amp;amp; security配置中，开启Developer mode。 在Turn Windows features on or off中，开启Windows Subsystem for Linu">
+  
+    <link rel="alternative" href="/atom.xml" title="Crzidea" type="application/atom+xml">
+  
+  
+  <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <!-- 分享时显示的图片 -->
+  <div style='display:none;'>
+      <img src="/favicon.png" />
+  </div>
+
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.png" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">crzidea.com</a></h1>
+		</hgroup>
+
+		
+		
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">列表</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:micro-tech@foxmail.com" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/crzidea" title="GitHub"></a></li>
+					        
+								<li id="新浪微博"><a class="新浪微博" target="_blank" href="http://weibo.com/crzidea" title="新浪微博"></a></li>
+					        
+								<li id="QQ"><a class="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=133683737&site=qq&menu=yes" title="QQ"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Bash/" style="font-size: 10px;">Bash</a> <a href="/tags/FEDAY/" style="font-size: 10px;">FEDAY</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/WSL/" style="font-size: 10px;">WSL</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/build/" style="font-size: 10px;">build</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/date/" style="font-size: 10px;">date</a> <a href="/tags/deploy/" style="font-size: 10px;">deploy</a> <a href="/tags/distribution/" style="font-size: 10px;">distribution</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/docker-registry-mirror/" style="font-size: 10px;">docker registry mirror</a> <a href="/tags/full-stack/" style="font-size: 10px;">full stack</a> <a href="/tags/gamepad/" style="font-size: 10px;">gamepad</a> <a href="/tags/gopigo/" style="font-size: 10px;">gopigo</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/koa/" style="font-size: 10px;">koa</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/memory-leak/" style="font-size: 10px;">memory leak</a> <a href="/tags/micro-service/" style="font-size: 10px;">micro service</a> <a href="/tags/mintty/" style="font-size: 10px;">mintty</a> <a href="/tags/nodejs/" style="font-size: 20px;">nodejs</a> <a href="/tags/ops/" style="font-size: 10px;">ops</a> <a href="/tags/performace/" style="font-size: 10px;">performace</a> <a href="/tags/range/" style="font-size: 10px;">range</a> <a href="/tags/raspberry-pi/" style="font-size: 10px;">raspberry pi</a> <a href="/tags/replace/" style="font-size: 10px;">replace</a> <a href="/tags/replication/" style="font-size: 10px;">replication</a> <a href="/tags/rethinkdb/" style="font-size: 10px;">rethinkdb</a> <a href="/tags/scaling/" style="font-size: 10px;">scaling</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/sequelize/" style="font-size: 10px;">sequelize</a> <a href="/tags/sharding/" style="font-size: 10px;">sharding</a> <a href="/tags/share/" style="font-size: 10px;">share</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/shuffle/" style="font-size: 10px;">shuffle</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/systemd/" style="font-size: 10px;">systemd</a> <a href="/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/tags/user-group/" style="font-size: 10px;">user group</a> <a href="/tags/velocity/" style="font-size: 10px;">velocity</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wsltty/" style="font-size: 10px;">wsltty</a> <a href="/tags/企业平台/" style="font-size: 10px;">企业平台</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a>
+					</div>
+				</section>
+				
+
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">GitHub</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://tech.meituan.com/">美团点评技术团队</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">crzidea.com</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+                
+                <img src="/img/avatar.png" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+                
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">crzidea.com</a></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">列表</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:micro-tech@foxmail.com" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/crzidea" title="GitHub"></a></li>
+					        
+								<li id="新浪微博"><a class="新浪微博" target="_blank" href="http://weibo.com/crzidea" title="新浪微博"></a></li>
+					        
+								<li id="QQ"><a class="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=133683737&site=qq&menu=yes" title="QQ"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-start-using-windows-subsystem-for-linux" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/30/start-using-windows-subsystem-for-linux/" class="article-date">
+  	<time datetime="2016-11-30T03:00:00.000Z" itemprop="datePublished">2016-11-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      浅尝 Windows Subsystem for Linux
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bash/">Bash</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WSL/">WSL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mintty/">mintty</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tmux/">tmux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wsltty/">wsltty</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h2 id="安装-卸载-重置"><a href="#安装-卸载-重置" class="headerlink" title="安装/卸载/重置"></a>安装/卸载/重置</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><ul>
+<li>准备一台安装了 Windows 10 的 PC，并将系统升级到最新版本。</li>
+<li>（可选，但是建议）安装 Fast Ring 的 Insider Preview 版本更新。</li>
+<li>在<code>Update &amp; security</code>配置中，开启<code>Developer mode</code>。</li>
+<li>在<code>Turn Windows features on or off</code>中，开启<code>Windows Subsystem for Linux (Beta)</code>。</li>
+<li>运行<code>bash</code>命令。</li>
+</ul>
+<h3 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h3><p>在 <strong>powershell</strong> 或者 <strong>cmd</strong> 中执行下面的命令，可以查看 安装/卸载/重置 WSL 相关的参数。</p>
+<figure class="highlight ps"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lxrun /?</div></pre></td></tr></table></figure>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><table>
+<thead>
+<tr>
+<th>WSL 路径</th>
+<th>Windows 路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> /</td>
+<td>%localappdata%\Lxss\rootfs</td>
+</tr>
+<tr>
+<td> /mnt/c</td>
+<td>C:\</td>
+</tr>
+</tbody>
+</table>
+<h2 id="新建文件默认权限-umask"><a href="#新建文件默认权限-umask" class="headerlink" title="新建文件默认权限 - umask"></a>新建文件默认权限 - umask</h2><p>目前 WSL 默认的新建文件默认权限存在问题。例如运行下面的命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">touch <span class="built_in">test</span> &amp;&amp; ll <span class="built_in">test</span></div></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-rw-rw-rw-<span class="number"> 1 </span>crzidea crzidea<span class="number"> 0 </span>Nov<span class="number"> 30 </span>11:45 test</div></pre></td></tr></table></figure>
+<p>可以看到 group 和 other 用户都默认拥有了写权限。这是因为 umask 没有被正确设置：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">umask</span> <span class="comment"># 输出结果为 0000</span></div></pre></td></tr></table></figure>
+<p>要解决这个问题，需要在 bashrc 中手动加入下面一行命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">umask</span> 022</div></pre></td></tr></table></figure>
+<p>重新打开终端后，重新执行上面的测试：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rm <span class="built_in">test</span> &amp;&amp; touch <span class="built_in">test</span> &amp;&amp; ll <span class="built_in">test</span></div></pre></td></tr></table></figure>
+<p>可以看到文件权限可以被正确设置了：</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-rw-r--r--<span class="number"> 1 </span>crzidea crzidea<span class="number"> 0 </span>Nov<span class="number"> 30 </span>11:45 test</div></pre></td></tr></table></figure>
+<p>另外，通过 <code>/mnt/</code> 路径访问文件时，文件权限大部分为 <code>rwx</code>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ll /mnt/c</div></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">drwxrwxrwx<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 30 </span>11:29 cygwin64</div><div class="line">-????????? ? ?    ?         ?            ? hiberfil.sys</div><div class="line">drwxrwxrwx<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 19 </span>13:53 Intel</div><div class="line">drwxrwxrwx<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 30 </span>12:40 OneDriveTemp</div><div class="line">-????????? ? ?    ?         ?            ? pagefile.sys</div><div class="line">d---------<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 18 </span>21:27 PerfLogs</div><div class="line">drwxrwxrwx<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 19 </span>14:33 ProgramData</div><div class="line">dr-xr-xr-x<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 19 </span>13:53 Program Files</div><div class="line">dr-xr-xr-x<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 19 </span>13:53 Program Files (x86)</div><div class="line">dr-xr-xr-x<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 19 </span>13:55 Recovery</div><div class="line">drwxrwxrwx<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 19 </span>14:47 $RECYCLE.BIN</div><div class="line">-????????? ? ?    ?         ?            ? swapfile.sys</div><div class="line">drwxrwxrwx<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 18 </span>21:33 $SysReset</div><div class="line">d---------<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 30 </span>10:39 System Volume Information</div><div class="line">dr-xr-xr-x<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 19 </span>14:48 Users</div><div class="line">dr-xr-xr-x<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 30 </span>10:45 Windows</div><div class="line">dr-xr-xr-x<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 30 </span>12:33 $WINDOWS.~BT</div><div class="line">drwxrwxrwx<span class="number"> 0 </span>root root     <span class="number"> 0 </span>Nov<span class="number"> 19 </span>19:47 Windows.old</div></pre></td></tr></table></figure>
+<h2 id="tmux-相关"><a href="#tmux-相关" class="headerlink" title="tmux 相关"></a>tmux 相关</h2><p>目前 WSL 可以支持绝大多数的 tmux 操作，这也是 WSL 发布时拿出来秀肌肉的亮点。但是测试中发现使用快捷键（默认<code>prefix + &quot;</code>）对 tmux 分屏时，无法保留当前的路径。在终端中运行<code>tmux split</code>不会有这个问题。</p>
+<h2 id="文件系统事件-inotify"><a href="#文件系统事件-inotify" class="headerlink" title="文件系统事件 - inotify"></a>文件系统事件 - inotify</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install -y inotify-tools</div></pre></td></tr></table></figure>
+<p>WSL 的早期版本无法使用 inotify 工具，也无法获取文件变动的事件。但是目前 Insider Preview 版本已经实现了功能，这些这也是建议用户升级到 Insider Preview Fast Ring 的原因之一。</p>
+<p>另外由于 WSL 文件系统的特殊性，需要注意：</p>
+<ul>
+<li>在 bash 环境下修改 /mnt/c 中的文件，也可使用这些事件。</li>
+<li>在 Windows 环境中修改文件，不会触发事件。</li>
+</ul>
+<h2 id="使用-bash-启动-Windows-应用程序"><a href="#使用-bash-启动-Windows-应用程序" class="headerlink" title="使用 bash 启动 Windows 应用程序"></a>使用 bash 启动 Windows 应用程序</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/mnt/c/Windows/System32</div><div class="line">notepad.exe</div></pre></td></tr></table></figure>
+<p><strong>注意</strong>：被调用的 Windows 应用程序可能无法正确识别传入的路径参数，例如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">explorer.exe / <span class="comment"># 无法正确识别 `/` 路径</span></div></pre></td></tr></table></figure>
+<h2 id="使用-Windows-应用程序监控-WSL-进程"><a href="#使用-Windows-应用程序监控-WSL-进程" class="headerlink" title="使用 Windows 应用程序监控 WSL 进程"></a>使用 Windows 应用程序监控 WSL 进程</h2><p>通过 WSL 启动的进程可以在 Windows 中访问到。例如在<code>powershell</code>中执行：</p>
+<figure class="highlight ps"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">get-process</span></div></pre></td></tr></table></figure>
+<p>可以从输出列表中查找到从 WSL 启动的 bash、ssh、node 之类的进程。</p>
+<h2 id="中文字符"><a href="#中文字符" class="headerlink" title="中文字符"></a>中文字符</h2><p>默认的 bash 命令行程序可能会无法正确显示中文，建议使用 mintty/wsltty 作为日常使用的终端应用程序。</p>
+<h2 id="个性化终端"><a href="#个性化终端" class="headerlink" title="个性化终端"></a>个性化终端</h2><h3 id="bash-exe"><a href="#bash-exe" class="headerlink" title="bash.exe"></a>bash.exe</h3><p>bash.exe 实际上是一个<code>Windows Console Application</code>，终端的样式（颜色、字体、光标）可以通过注册表修改，但是可以修改的项目有限。</p>
+<h3 id="mintty"><a href="#mintty" class="headerlink" title="mintty"></a>mintty</h3><p>如果觉得默认的 bash.exe 终端太挫了，可以用 mintty + wslbridge 的组合代替。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>mintty 作者建了一个 wsltty 的项目专门用于发布用于 WSL 的终端。但是亲测后发现 Windows 升级之后，之前发布的编译好的终端已经无法运行了。所以需要自己动手将下面的几个玩具组合起来。</p>
+<ul>
+<li>mintty 需要从 <a href="cygwin64">cygwin64</a> 提取</li>
+<li><a href="https://github.com/mintty/wsltty" target="_blank" rel="external">wsltty</a></li>
+<li><a href="https://github.com/rprichard/wslbridge/releases" target="_blank" rel="external">wslbridge</a></li>
+</ul>
+<p>将所有文件都解压到<code>C:\cygwin64\bin</code>中，运行<code>install.bat</code>即可。</p>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><p>下载<a href="https://github.com/crzidea/confbook/blob/master/.minttyrc" target="_blank" rel="external">已经配置好的 Monokai 样式文件</a>放入下面的目录，重新打开 mintty 即可：</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%localappdata%\wsltty\home\%username%\</div></pre></td></tr></table></figure>
+<h2 id="日常开发"><a href="#日常开发" class="headerlink" title="日常开发"></a>日常开发</h2><p>这篇博客其实就是在 WSL 的 vim 中编辑的，并且使用 node 创建了一个 web 服务器。所以使用 WSL 应对日常的开发，应该是没有问题的。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://msdn.microsoft.com/en-us/commandline/wsl/release_notes" target="_blank" rel="external">Bash on Ubuntu on Windows - Release Notes</a></li>
+<li><a href="https://github.com/Microsoft/BashOnWindows/issues" target="_blank" rel="external">Track or report an issue</a></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <div id="article-nav-newer" class="article-nav-title">
+      <a href="/2016/12/05/velocity-2016-notes/">
+        Velocity 2016 参会笔记
+      </a>
+    </div>
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2016/08/12/koa-restql/">
+        RestQL：现代化的 API 开发方式
+      </a>
+    </div>
+  
+</nav>
+
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-卸载-重置"><span class="toc-number">1.</span> <span class="toc-text">安装/卸载/重置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">1.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他操作"><span class="toc-number">1.2.</span> <span class="toc-text">其他操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录结构"><span class="toc-number">2.</span> <span class="toc-text">目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建文件默认权限-umask"><span class="toc-number">3.</span> <span class="toc-text">新建文件默认权限 - umask</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tmux-相关"><span class="toc-number">4.</span> <span class="toc-text">tmux 相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件系统事件-inotify"><span class="toc-number">5.</span> <span class="toc-text">文件系统事件 - inotify</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-bash-启动-Windows-应用程序"><span class="toc-number">6.</span> <span class="toc-text">使用 bash 启动 Windows 应用程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-Windows-应用程序监控-WSL-进程"><span class="toc-number">7.</span> <span class="toc-text">使用 Windows 应用程序监控 WSL 进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#中文字符"><span class="toc-number">8.</span> <span class="toc-text">中文字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#个性化终端"><span class="toc-number">9.</span> <span class="toc-text">个性化终端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bash-exe"><span class="toc-number">9.1.</span> <span class="toc-text">bash.exe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mintty"><span class="toc-number">9.2.</span> <span class="toc-text">mintty</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">9.2.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置文件"><span class="toc-number">9.2.2.</span> <span class="toc-text">配置文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日常开发"><span class="toc-number">10.</span> <span class="toc-text">日常开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">11.</span> <span class="toc-text">参考资料</span></a></li></ol>
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+
+<div class="share ds-share flat"
+    data-thread-key=""
+    data-title="浅尝 Windows Subsystem for Linux"
+    data-images="https://crzidea.com/favicon-96x96.png"
+    data-content=""
+    data-url="https://crzidea.com/2016/11/30/start-using-windows-subsystem-for-linux/"
+>
+    <div class="ds-share-inline">
+        <ul  class="ds-share-icons-32">
+            <li> <a class="ds-weibo" href="javascript:void(0);" data-service="weibo"></a> </li>
+            <li> <a class="ds-wechat" href="javascript:void(0);" data-service="wechat"></a> </li>
+            <li> <a class="ds-qq" href="javascript:void(0);" data-service="qq"></a> </li>
+            <li> <a class="ds-douban" href="javascript:void(0);" data-service="douban"></a> </li>
+            <li> <a class="ds-twitter" href="javascript:void(0);" data-service="twitter"></a> </li>
+            <li> <a class="ds-facebook" href="javascript:void(0);" data-service="facebook"></a> </li>
+            <li> <a class="ds-linkedin" href="javascript:void(0);" data-service="linkedin"></a> </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016/11/30/start-using-windows-subsystem-for-linux/" data-title="浅尝 Windows Subsystem for Linux" data-url="https://crzidea.com/2016/11/30/start-using-windows-subsystem-for-linux/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"crzidea"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#ds-thread" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    
+    <div  class="post-nav-button">
+    <a href="/2016/12/05/velocity-2016-notes/" title="上一篇: Velocity 2016 参会笔记">
+    <i class="fa fa-angle-left"></i>
+    </a>
+    <a href="/2016/08/12/koa-restql/" title="下一篇: RestQL：现代化的 API 开发方式">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: false,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+    
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2017 crzidea.com
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+      <span id="busuanzi_container_site_pv" style='display:none'>
+        <span id="site-visit" >本站到访数: 
+        <span id="busuanzi_value_site_uv"></span>
+        </span>
+      </span>
+      <span id="busuanzi_container_page_pv" style='display:none'>
+        <span id="page-visit">, 本页阅读量: 
+        <span id="busuanzi_value_page_pv"></span>
+        </span>
+      </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+  <style>
+    body {
+      background: lightgray;
+    }
+    #container .left-col {
+      background: white;
+    }
+    .article-inner {
+      background: white;
+    }
+    .post-nav-button {
+      background: #ececec;
+    }
+    #header .header-nav .social #GitHub {
+      background-color: #bfd3ec;
+    }
+  </style>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-81807912-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>通过 systemd 设置 docker 仓库镜像 | Crzidea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="具体步骤（伸手党直接从第4步开始看）：  找到一个可用的镜像服务，参考 Faster Docker pulls in China with DaoCloud。 通过 yum 安装 docker 之后，检查 systemd service：  1systemctl status docker  从输出中找到对应的 .service 文件：  12345● docker.service - Docke">
+<meta name="keywords" content="docker,docker registry mirror,systemd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过 systemd 设置 docker 仓库镜像">
+<meta property="og:url" content="https://crzidea.com/2016/07/19/configure-docker-registry-mirror-with-systemd/index.html">
+<meta property="og:site_name" content="Crzidea">
+<meta property="og:description" content="具体步骤（伸手党直接从第4步开始看）：  找到一个可用的镜像服务，参考 Faster Docker pulls in China with DaoCloud。 通过 yum 安装 docker 之后，检查 systemd service：  1systemctl status docker  从输出中找到对应的 .service 文件：  12345● docker.service - Docke">
+<meta property="og:updated_time" content="2017-06-13T04:13:15.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="通过 systemd 设置 docker 仓库镜像">
+<meta name="twitter:description" content="具体步骤（伸手党直接从第4步开始看）：  找到一个可用的镜像服务，参考 Faster Docker pulls in China with DaoCloud。 通过 yum 安装 docker 之后，检查 systemd service：  1systemctl status docker  从输出中找到对应的 .service 文件：  12345● docker.service - Docke">
+  
+    <link rel="alternative" href="/atom.xml" title="Crzidea" type="application/atom+xml">
+  
+  
+  <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <!-- 分享时显示的图片 -->
+  <div style='display:none;'>
+      <img src="/favicon.png" />
+  </div>
+
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.png" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">crzidea.com</a></h1>
+		</hgroup>
+
+		
+		
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">列表</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:micro-tech@foxmail.com" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/crzidea" title="GitHub"></a></li>
+					        
+								<li id="新浪微博"><a class="新浪微博" target="_blank" href="http://weibo.com/crzidea" title="新浪微博"></a></li>
+					        
+								<li id="QQ"><a class="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=133683737&site=qq&menu=yes" title="QQ"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Bash/" style="font-size: 10px;">Bash</a> <a href="/tags/FEDAY/" style="font-size: 10px;">FEDAY</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/WSL/" style="font-size: 10px;">WSL</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/build/" style="font-size: 10px;">build</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/date/" style="font-size: 10px;">date</a> <a href="/tags/deploy/" style="font-size: 10px;">deploy</a> <a href="/tags/distribution/" style="font-size: 10px;">distribution</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/docker-registry-mirror/" style="font-size: 10px;">docker registry mirror</a> <a href="/tags/full-stack/" style="font-size: 10px;">full stack</a> <a href="/tags/gamepad/" style="font-size: 10px;">gamepad</a> <a href="/tags/gopigo/" style="font-size: 10px;">gopigo</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/koa/" style="font-size: 10px;">koa</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/memory-leak/" style="font-size: 10px;">memory leak</a> <a href="/tags/micro-service/" style="font-size: 10px;">micro service</a> <a href="/tags/mintty/" style="font-size: 10px;">mintty</a> <a href="/tags/nodejs/" style="font-size: 20px;">nodejs</a> <a href="/tags/ops/" style="font-size: 10px;">ops</a> <a href="/tags/performace/" style="font-size: 10px;">performace</a> <a href="/tags/range/" style="font-size: 10px;">range</a> <a href="/tags/raspberry-pi/" style="font-size: 10px;">raspberry pi</a> <a href="/tags/replace/" style="font-size: 10px;">replace</a> <a href="/tags/replication/" style="font-size: 10px;">replication</a> <a href="/tags/rethinkdb/" style="font-size: 10px;">rethinkdb</a> <a href="/tags/scaling/" style="font-size: 10px;">scaling</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/sequelize/" style="font-size: 10px;">sequelize</a> <a href="/tags/sharding/" style="font-size: 10px;">sharding</a> <a href="/tags/share/" style="font-size: 10px;">share</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/shuffle/" style="font-size: 10px;">shuffle</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/systemd/" style="font-size: 10px;">systemd</a> <a href="/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/tags/user-group/" style="font-size: 10px;">user group</a> <a href="/tags/velocity/" style="font-size: 10px;">velocity</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wsltty/" style="font-size: 10px;">wsltty</a> <a href="/tags/企业平台/" style="font-size: 10px;">企业平台</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a>
+					</div>
+				</section>
+				
+
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">GitHub</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://tech.meituan.com/">美团点评技术团队</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">crzidea.com</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+                
+                <img src="/img/avatar.png" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+                
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">crzidea.com</a></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">列表</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:micro-tech@foxmail.com" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/crzidea" title="GitHub"></a></li>
+					        
+								<li id="新浪微博"><a class="新浪微博" target="_blank" href="http://weibo.com/crzidea" title="新浪微博"></a></li>
+					        
+								<li id="QQ"><a class="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=133683737&site=qq&menu=yes" title="QQ"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-configure-docker-registry-mirror-with-systemd" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/19/configure-docker-registry-mirror-with-systemd/" class="article-date">
+  	<time datetime="2016-07-19T09:05:55.000Z" itemprop="datePublished">2016-07-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      通过 systemd 设置 docker 仓库镜像
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-registry-mirror/">docker registry mirror</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/systemd/">systemd</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>具体步骤（伸手党直接从第4步开始看）：</p>
+<ol>
+<li>找到一个可用的镜像服务，参考 <a href="http://rzhw.me/blog/2015/12/faster-docker-pulls-in-china-with-daocloud/" target="_blank" rel="external">Faster Docker pulls in China with DaoCloud</a>。</li>
+<li><p>通过 yum 安装 docker 之后，检查 systemd service：</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl status docker</div></pre></td></tr></table></figure>
+<p> 从输出中找到对应的 .service 文件：</p>
+ <figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">● docker.service - Docker Application Container Engine</div><div class="line"><span class="string">Loaded:</span> loaded (<span class="regexp">/usr/</span>lib<span class="regexp">/systemd/</span>system/docker.service; enabled; vendor <span class="string">preset:</span> disabled)</div><div class="line"><span class="string">Active:</span> active (running) since Tue <span class="number">2016</span><span class="number">-07</span><span class="number">-19</span> <span class="number">15</span>:<span class="number">02</span>:<span class="number">49</span> CST; <span class="number">2</span>h <span class="number">9</span>min ago</div><div class="line"><span class="symbol">  Docs:</span> <span class="string">http:</span><span class="comment">//docs.docker.com</span></div><div class="line">...</div></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>docker.service</code>中找到相应的<code>OPTIONS</code>环境变量:</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /usr/lib/systemd/system/docker.service</div></pre></td></tr></table></figure>
+<p> 找到下面几行（为了更易于理解，这里把所有的干扰项都删掉了）：</p>
+ <figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">EnvironmentFile=-<span class="regexp">/etc/sysconfig</span><span class="regexp">/docker</span></div><div class="line">ExecStart=/bin<span class="regexp">/sh -c '/usr</span><span class="regexp">/bin/docker</span>-current daemon \</div><div class="line">          $OPTIONS \</div><div class="line">          <span class="number">2</span>&gt;&amp;<span class="number">1</span> | <span class="regexp">/usr/bin</span><span class="regexp">/forward-journald -tag docker'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>编辑<code>EnvironmentFile</code>项所指的文件，把参数加到<code>OPTIONS</code>环境变量里</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysconfig/docker</div></pre></td></tr></table></figure>
+<p> 编辑下面的内容：</p>
+ <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Modify these options if you want to change the way the docker daemon runs</span></div><div class="line"><span class="comment">#OPTIONS='--selinux-enabled --log-driver=journald'</span></div><div class="line">OPTIONS='<span class="params">--selinux-enabled</span> <span class="params">--log-driver=journald</span> <span class="params">--registry-mirror=http</span>:<span class="string">//YOUR_ID.m.daocloud.io</span>'</div></pre></td></tr></table></figure>
+<p> <strong>注意</strong>：这个配置文件不支持使用 bash 的模板字符串。</p>
+</li>
+<li>重新启动 docker 服务： <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo systemctl restart docker</div></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <div id="article-nav-newer" class="article-nav-title">
+      <a href="/2016/07/19/Test-scaling-sharding-and-replication-feature-of-rethinkdb-with-docker/">
+        使用 docker 测试 rethinkdb 的高可用和可扩展特性
+      </a>
+    </div>
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2016/05/17/how-to-implenment-shuffle-method/">
+        你的洗牌算法有可能是错的
+      </a>
+    </div>
+  
+</nav>
+
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+
+<div class="share ds-share flat"
+    data-thread-key=""
+    data-title="通过 systemd 设置 docker 仓库镜像"
+    data-images="https://crzidea.com/favicon-96x96.png"
+    data-content=""
+    data-url="https://crzidea.com/2016/07/19/configure-docker-registry-mirror-with-systemd/"
+>
+    <div class="ds-share-inline">
+        <ul  class="ds-share-icons-32">
+            <li> <a class="ds-weibo" href="javascript:void(0);" data-service="weibo"></a> </li>
+            <li> <a class="ds-wechat" href="javascript:void(0);" data-service="wechat"></a> </li>
+            <li> <a class="ds-qq" href="javascript:void(0);" data-service="qq"></a> </li>
+            <li> <a class="ds-douban" href="javascript:void(0);" data-service="douban"></a> </li>
+            <li> <a class="ds-twitter" href="javascript:void(0);" data-service="twitter"></a> </li>
+            <li> <a class="ds-facebook" href="javascript:void(0);" data-service="facebook"></a> </li>
+            <li> <a class="ds-linkedin" href="javascript:void(0);" data-service="linkedin"></a> </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016/07/19/configure-docker-registry-mirror-with-systemd/" data-title="通过 systemd 设置 docker 仓库镜像" data-url="https://crzidea.com/2016/07/19/configure-docker-registry-mirror-with-systemd/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"crzidea"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#ds-thread" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    
+    <div  class="post-nav-button">
+    <a href="/2016/07/19/Test-scaling-sharding-and-replication-feature-of-rethinkdb-with-docker/" title="上一篇: 使用 docker 测试 rethinkdb 的高可用和可扩展特性">
+    <i class="fa fa-angle-left"></i>
+    </a>
+    <a href="/2016/05/17/how-to-implenment-shuffle-method/" title="下一篇: 你的洗牌算法有可能是错的">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: false,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+    
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2017 crzidea.com
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+      <span id="busuanzi_container_site_pv" style='display:none'>
+        <span id="site-visit" >本站到访数: 
+        <span id="busuanzi_value_site_uv"></span>
+        </span>
+      </span>
+      <span id="busuanzi_container_page_pv" style='display:none'>
+        <span id="page-visit">, 本页阅读量: 
+        <span id="busuanzi_value_page_pv"></span>
+        </span>
+      </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+  <style>
+    body {
+      background: lightgray;
+    }
+    #container .left-col {
+      background: white;
+    }
+    .article-inner {
+      background: white;
+    }
+    .post-nav-button {
+      background: #ececec;
+    }
+    #header .header-nav .social #GitHub {
+      background-color: #bfd3ec;
+    }
+  </style>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-81807912-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  </div>
+
+</body>
+</html>

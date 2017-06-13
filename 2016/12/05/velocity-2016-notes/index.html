@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Velocity 2016 参会笔记 | Crzidea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="大规模系统平衡性能最佳实践和弹性工程 Fire TV 的遥控器导航用例很有意思。但是太复杂了，但是值得思考。改变遥控器的输入方式，好像可以更简单的解决问题。 有能跑 JavaScript 的电视棒了，是个好消息。 并没有开源。但是有个 starter 项目仓库。 讲师的中英文交叉的很6。  Web 组件介绍 Web is always fragmented。 ES6 class extends H">
+<meta name="keywords" content="velocity,web,performace,ops,micro service,database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Velocity 2016 参会笔记">
+<meta property="og:url" content="https://crzidea.com/2016/12/05/velocity-2016-notes/index.html">
+<meta property="og:site_name" content="Crzidea">
+<meta property="og:description" content="大规模系统平衡性能最佳实践和弹性工程 Fire TV 的遥控器导航用例很有意思。但是太复杂了，但是值得思考。改变遥控器的输入方式，好像可以更简单的解决问题。 有能跑 JavaScript 的电视棒了，是个好消息。 并没有开源。但是有个 starter 项目仓库。 讲师的中英文交叉的很6。  Web 组件介绍 Web is always fragmented。 ES6 class extends H">
+<meta property="og:updated_time" content="2017-06-13T04:13:15.160Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Velocity 2016 参会笔记">
+<meta name="twitter:description" content="大规模系统平衡性能最佳实践和弹性工程 Fire TV 的遥控器导航用例很有意思。但是太复杂了，但是值得思考。改变遥控器的输入方式，好像可以更简单的解决问题。 有能跑 JavaScript 的电视棒了，是个好消息。 并没有开源。但是有个 starter 项目仓库。 讲师的中英文交叉的很6。  Web 组件介绍 Web is always fragmented。 ES6 class extends H">
+  
+    <link rel="alternative" href="/atom.xml" title="Crzidea" type="application/atom+xml">
+  
+  
+  <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <!-- 分享时显示的图片 -->
+  <div style='display:none;'>
+      <img src="/favicon.png" />
+  </div>
+
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.png" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">crzidea.com</a></h1>
+		</hgroup>
+
+		
+		
+
+
+		
+			<div id="switch-btn" class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div id="switch-area" class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives/">列表</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:micro-tech@foxmail.com" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/crzidea" title="GitHub"></a></li>
+					        
+								<li id="新浪微博"><a class="新浪微博" target="_blank" href="http://weibo.com/crzidea" title="新浪微博"></a></li>
+					        
+								<li id="QQ"><a class="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=133683737&site=qq&menu=yes" title="QQ"></a></li>
+					        
+						</ul>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Bash/" style="font-size: 10px;">Bash</a> <a href="/tags/FEDAY/" style="font-size: 10px;">FEDAY</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/WSL/" style="font-size: 10px;">WSL</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/build/" style="font-size: 10px;">build</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/date/" style="font-size: 10px;">date</a> <a href="/tags/deploy/" style="font-size: 10px;">deploy</a> <a href="/tags/distribution/" style="font-size: 10px;">distribution</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/docker-registry-mirror/" style="font-size: 10px;">docker registry mirror</a> <a href="/tags/full-stack/" style="font-size: 10px;">full stack</a> <a href="/tags/gamepad/" style="font-size: 10px;">gamepad</a> <a href="/tags/gopigo/" style="font-size: 10px;">gopigo</a> <a href="/tags/https/" style="font-size: 10px;">https</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/koa/" style="font-size: 10px;">koa</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/memory-leak/" style="font-size: 10px;">memory leak</a> <a href="/tags/micro-service/" style="font-size: 10px;">micro service</a> <a href="/tags/mintty/" style="font-size: 10px;">mintty</a> <a href="/tags/nodejs/" style="font-size: 20px;">nodejs</a> <a href="/tags/ops/" style="font-size: 10px;">ops</a> <a href="/tags/performace/" style="font-size: 10px;">performace</a> <a href="/tags/range/" style="font-size: 10px;">range</a> <a href="/tags/raspberry-pi/" style="font-size: 10px;">raspberry pi</a> <a href="/tags/replace/" style="font-size: 10px;">replace</a> <a href="/tags/replication/" style="font-size: 10px;">replication</a> <a href="/tags/rethinkdb/" style="font-size: 10px;">rethinkdb</a> <a href="/tags/scaling/" style="font-size: 10px;">scaling</a> <a href="/tags/sed/" style="font-size: 10px;">sed</a> <a href="/tags/sequelize/" style="font-size: 10px;">sequelize</a> <a href="/tags/sharding/" style="font-size: 10px;">sharding</a> <a href="/tags/share/" style="font-size: 10px;">share</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/shuffle/" style="font-size: 10px;">shuffle</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/systemd/" style="font-size: 10px;">systemd</a> <a href="/tags/tmux/" style="font-size: 10px;">tmux</a> <a href="/tags/user-group/" style="font-size: 10px;">user group</a> <a href="/tags/velocity/" style="font-size: 10px;">velocity</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/wsltty/" style="font-size: 10px;">wsltty</a> <a href="/tags/企业平台/" style="font-size: 10px;">企业平台</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a>
+					</div>
+				</section>
+				
+
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">GitHub</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://tech.meituan.com/">美团点评技术团队</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">crzidea.com</a></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<a href="/" class="profilepic">
+                
+                <img src="/img/avatar.png" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+                
+			</a>
+			<hgroup>
+			  <h1 class="header-author"><a href="/" title="回到主页">crzidea.com</a></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives/">列表</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+						<ul class="social">
+							
+								<li id="Email"><a class="Email" target="_blank" href="mailto:micro-tech@foxmail.com" title="Email"></a></li>
+					        
+								<li id="GitHub"><a class="GitHub" target="_blank" href="https://github.com/crzidea" title="GitHub"></a></li>
+					        
+								<li id="新浪微博"><a class="新浪微博" target="_blank" href="http://weibo.com/crzidea" title="新浪微博"></a></li>
+					        
+								<li id="QQ"><a class="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=133683737&site=qq&menu=yes" title="QQ"></a></li>
+					        
+						</ul>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-velocity-2016-notes" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/05/velocity-2016-notes/" class="article-date">
+  	<time datetime="2016-12-05T03:09:48.000Z" itemprop="datePublished">2016-12-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Velocity 2016 参会笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/micro-service/">micro service</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ops/">ops</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/performace/">performace</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/velocity/">velocity</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+	</div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <h2 id="大规模系统平衡性能最佳实践和弹性工程"><a href="#大规模系统平衡性能最佳实践和弹性工程" class="headerlink" title="大规模系统平衡性能最佳实践和弹性工程"></a>大规模系统平衡性能最佳实践和弹性工程</h2><ul>
+<li>Fire TV 的遥控器导航用例很有意思。但是太复杂了，但是值得思考。改变遥控器的输入方式，好像可以更简单的解决问题。</li>
+<li>有能跑 JavaScript 的电视棒了，是个好消息。</li>
+<li>并没有开源。但是有个 starter 项目仓库。</li>
+<li>讲师的中英文交叉的很6。</li>
+</ul>
+<h2 id="Web-组件介绍"><a href="#Web-组件介绍" class="headerlink" title="Web 组件介绍"></a>Web 组件介绍</h2><ul>
+<li>Web is always fragmented。</li>
+<li>ES6 class extends HTMLElement + Shadow DOM 实现 Web Component 很有意思。</li>
+<li>attributeChangeCallback 可以实现自定义属性改变时的行为。</li>
+<li>Template tag 可以用于代替 JSX。</li>
+<li><a href="https://webcomponents.org" target="_blank" rel="external">https://webcomponents.org</a> 有 polyfill 支持</li>
+<li>明天会讲 Polymer at YouTube。</li>
+</ul>
+<h2 id="零点之战——阿里双11技术架构演进之路"><a href="#零点之战——阿里双11技术架构演进之路" class="headerlink" title="零点之战——阿里双11技术架构演进之路"></a>零点之战——阿里双11技术架构演进之路</h2><ul>
+<li>很虚，PPT 做的很烂，字太多，图里面的字很小，画的也很难看。一直强调我们业务很复杂、用户量很大、流量很大，数据库怎么做一致性都没提。</li>
+<li>保障服务集群在区域内可以独立完成。（只有买家的业务会在自己的区域内独立完成。）</li>
+<li>服务集群可以快速复制。</li>
+<li>流量链条压测工具。</li>
+<li>阿里云降低双十一机器成本。</li>
+<li>处理不了的流量主动拒绝服务。</li>
+<li>动态设置任务分配不均的实例的权重。</li>
+<li>不要再线上使用没有测试过的预案。</li>
+</ul>
+<h2 id="OceanBase：蚂蚁双十一背后的关系数据库"><a href="#OceanBase：蚂蚁双十一背后的关系数据库" class="headerlink" title="OceanBase：蚂蚁双十一背后的关系数据库"></a>OceanBase：蚂蚁双十一背后的关系数据库</h2><ul>
+<li>4 年落地，双十一全部使用 OceanBase。</li>
+<li>满足强一致性。</li>
+<li>分布式投票，Paxos协议强同步。但机房至少一个 raplication 做 backup。</li>
+<li>模拟断电断网。</li>
+<li>数据迁移，灰度引流，留好后路，随时回滚。</li>
+<li>查了一下，目前还没有开源。</li>
+<li>完全兼容 MySQL，优化器向 Oracle 学习。</li>
+<li>支持单个实例 10w 连接数。</li>
+<li>查询过程打断点，执行过程中可以取消执行，防止大查询占用过度资源。</li>
+</ul>
+<h2 id="滴滴弹性在线存储平台"><a href="#滴滴弹性在线存储平台" class="headerlink" title="滴滴弹性在线存储平台"></a>滴滴弹性在线存储平台</h2><ul>
+<li>听起来很不靠谱，没有亮点，不知道为什么会做这个东西。一上来就是 redis、hbase、mongodb 都满足不了我们的需求，所以我们要自研。另一个造轮子的理由是，我们无法修改上游的代码。而且存储引擎是基于 RocksDB 和 Redis 的。尤其是数据同步的方案，竟然用 PPTP 的时间戳作为参考，呵呵哒。</li>
+<li>核心在于实现了一个可以伸缩的 Slot/Region 的路由表。</li>
+</ul>
+<h2 id="58-到家微服务架构实践"><a href="#58-到家微服务架构实践" class="headerlink" title="58 到家微服务架构实践"></a>58 到家微服务架构实践</h2><ul>
+<li>比较水，其他厅也没有有价值的主题了，随便听一下吧。</li>
+</ul>
+<h2 id="DT时代的业务实时监控之道"><a href="#DT时代的业务实时监控之道" class="headerlink" title="DT时代的业务实时监控之道"></a>DT时代的业务实时监控之道</h2><ul>
+<li>和我们的业务比较像。</li>
+<li>计算任务可以在前端编排。</li>
+<li>存储用的 hbase，用法很想 OpenTSDB。</li>
+<li>通过接口支持自定义查询。</li>
+<li>支持自定义可视化。</li>
+<li>只支持 5 个维度，但是对于维度的值不限制数量，但是遇到维度爆炸的情况会截断展开的量。</li>
+<li>没有考虑维度爆炸造成的存储资源浪费的问题。</li>
+<li>Hbase 热点的问题，通过把 维度 放在 timestamp 之前解决。</li>
+<li>整体来看，整个的产品完成度非常高，我们需要一段时间才能追赶上。</li>
+<li>思考：需要做排名的指标，用我之前提出的记录用户访问习惯的思路可能会稍微做一下修改。</li>
+</ul>
+<h2 id="主题发言-阿里应用运维体系演变"><a href="#主题发言-阿里应用运维体系演变" class="headerlink" title="主题发言 阿里应用运维体系演变"></a>主题发言 阿里应用运维体系演变</h2><ul>
+<li>脚本化 =&gt; 工具化 =&gt; DevOPS =&gt; 自动化</li>
+<li>工具化<ul>
+<li>工具/运维团队 =&gt; 合并各工具团队 =&gt; 工具团队同时兼 OPS 工作。</li>
+<li>工具化遇到的问题：<ul>
+<li>推进落地难，思想转变，时间保障。</li>
+<li>有工具，但是工具的质量不高，运维的幸福感并没有明显提升。</li>
+<li>标准化，和国外差距比较大，刚开始做不好，就要化很多年时间去填补。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DevOPS<ul>
+<li>将运维团队交还给研发团队。之前将运维的组织架构统一到一起，现在拆开。</li>
+<li>借助 Docker。</li>
+</ul>
+</li>
+<li>自动化<ul>
+<li>有工具但是需要人点，需要巨大的碎片化时间投入。</li>
+<li>无人值守比较难做。以发布过程为例，没有一个判断发布成功的统一条件。</li>
+</ul>
+</li>
+<li>智能化<ul>
+<li>还没开始做。</li>
+<li>说要通过机器学习判断特征，这个比较扯，比如 1000 个应用，999 个被下线了，机器学习是不是就自动下线最后一个应用呢？要是最后一个应用不能被下线怎么办？</li>
+</ul>
+</li>
+</ul>
+<h2 id="主题发言-测量服务的可运维性-Measure-the-operability-of-your-service"><a href="#主题发言-测量服务的可运维性-Measure-the-operability-of-your-service" class="headerlink" title="主题发言 测量服务的可运维性 (Measure the operability of your service)"></a>主题发言 测量服务的可运维性 (Measure the operability of your service)</h2><ul>
+<li>讲师的开场介绍好像是在被面试一样。</li>
+<li>讲师的表达不太好。</li>
+</ul>
+<h2 id="Swarm优化：从单实例管理-1000-nodes-到-30000-nodes"><a href="#Swarm优化：从单实例管理-1000-nodes-到-30000-nodes" class="headerlink" title="Swarm优化：从单实例管理 1000 nodes 到 30000 nodes"></a>Swarm优化：从单实例管理 1000 nodes 到 30000 nodes</h2><ul>
+<li>选择 Swarm 而不是其他方案的原因是因为对 docker 本身的协议更熟悉，方便深度定制。</li>
+<li>提到阿里采用的大部分开源软件都是经过深度定制的。</li>
+<li>问题：是否支持 airplane 或 busybox 之类的镜像。</li>
+<li>遇到的性能问题：<ul>
+<li>节点多，线程太多，Swarm 进程直接崩溃。</li>
+<li>TCP 连接泄露。</li>
+</ul>
+</li>
+<li>实例太多，需要引入更多管理系统。</li>
+<li>（对 golang 语言相关的不感兴趣，跳过这部分细节了。）</li>
+<li>Swarm 线程最大线程数默认被限制在 50k。<ul>
+<li>官方的解释是网络 IO 会创建很多线程。</li>
+<li>真正的原因是使用 conn.File() 将连接设置为了 block 模式。<pre><code>问题：查了一下已经被阿里的人提交 PR 并 merge 了。我的问题是，setTCPUserTimeout() 是 keepalive 还是应用层的心跳？删掉之后会有什么影响？如果是中间使用了代理会怎么样呢？
+回答：删掉之后会造成没有应用层心跳机制，要两个小时才能检测到另一端死掉了。Swarm 的协议并没有提供可以穿透代理的端到端的心跳机制。阿里内部的跨级房 Swarm 通信中间没有网管或代理，所以不会遇到 TCP 的心跳不能穿透代理的问题。
+</code></pre></li>
+</ul>
+</li>
+<li>CPU消耗特别大，有很多低效率的算法造成的问题。</li>
+<li>问题：查了一下已经被阿里的人提交 PR 并 merge 了。我的问题是，setTCPUserTimeout() 是 keepalive 还是应用层的心跳？删掉之后会有什么影响？如果是中间使用了代理会怎么样呢？<pre><code>回答：删掉之后会造成没有应用层心跳机制，要两个小时才能检测到另一端死掉了。Swarm 的协议并没有提供可以穿透代理的端到端的心跳机制。阿里内部的跨级房 Swarm 通信中间没有网管或代理，所以不会遇到 TCP 的心跳不能穿透代理的问题。
+</code></pre></li>
+<li>问题：阿里内部的 docker 容器可以支持所有的镜像吗？比如 alpine。<pre><code>回答并不可以，只能使用我们自己维护的镜像（有点儿像我们的 cargo）。而且只有 readhat 系的，想用 ubuntu 是不可能的（还不如 cargo）。社区的应用基本上没法用。
+</code></pre></li>
+</ul>
+<h2 id="OWL-分布式开源监控最佳实践"><a href="#OWL-分布式开源监控最佳实践" class="headerlink" title="OWL 分布式开源监控最佳实践"></a>OWL 分布式开源监控最佳实践</h2><ul>
+<li>完全是来广告的。和我们的量级和功能相比，太小了，没什么有价值的信息。</li>
+</ul>
+<h2 id="网易蜂巢基于-kubernetes-的公有云运维实践"><a href="#网易蜂巢基于-kubernetes-的公有云运维实践" class="headerlink" title="网易蜂巢基于 kubernetes 的公有云运维实践"></a>网易蜂巢基于 kubernetes 的公有云运维实践</h2><ul>
+<li>作者的背景很靠谱，有很多容器化、虚拟化方案的经验。</li>
+<li>计算/网络/存储虚拟化</li>
+<li>从虚拟机到容器<ul>
+<li>以资源为核心 =&gt; 以应用为核心</li>
+<li>有状态的容器：保留内存和硬盘可写能力</li>
+<li>容器跨主机互联</li>
+<li>云盘</li>
+</ul>
+</li>
+<li>一板斧：去状态、可扩展（都已经喊得烂了，不记了）</li>
+<li>二板斧：容器化、可编排<ul>
+<li>Kuber 系技术栈实现快速编排无状态的应用，相当于分布式的 docker-compose，</li>
+</ul>
+</li>
+<li>三板斧：DevOPS、可迭代<ul>
+<li>主要讲的多个环境自动选择配置选项。基本上靠 CI、CD、kuber 系的 compose 功能实现。</li>
+</ul>
+</li>
+<li>私有云到公有云<ul>
+<li>容器的安全<pre><code>不同租户之间不共享虚拟机。
+</code></pre></li>
+<li>容器的启动速度<pre><code>第一次启动比较慢，后面会比较快。
+</code></pre></li>
+<li>容器的规模<pre><code>扩展到了 15k 个 kuber 节点。
+</code></pre></li>
+<li>容器的租户隔离<pre><code>不同租户之间不共享虚拟机。
+</code></pre></li>
+</ul>
+</li>
+<li>编排优化<ul>
+<li>支持多用户</li>
+<li>调度性能用户，默认只支持单个串行队列</li>
+<li>提高集群扩展性，通过拆分 etcd 集群实现</li>
+</ul>
+</li>
+<li>虚拟机启动优化：提前分配 IP</li>
+<li>提供内部镜像仓库，提升下载镜像的速度</li>
+<li>整个蜂巢全部采用没有修改过的开源软件（这一点非常赞！好多公司都做不到啊！）</li>
+</ul>
+<h2 id="阿里巴巴-Aliware-十年微服务架构演进历程中的挑战与实践"><a href="#阿里巴巴-Aliware-十年微服务架构演进历程中的挑战与实践" class="headerlink" title="阿里巴巴 Aliware 十年微服务架构演进历程中的挑战与实践"></a>阿里巴巴 Aliware 十年微服务架构演进历程中的挑战与实践</h2><ul>
+<li>上百个人维护一个核心工程<ul>
+<li>源代码冲突严重</li>
+<li>协同成本极高</li>
+</ul>
+</li>
+<li>问题：工程化的方案，为什么没有采用 google、facebook 整个公司的代码放在一个仓库里的做法？放在一个仓库里还可以共享很多已经实现的逻辑看起来效率更高。</li>
+<li>错误难以隔离</li>
+<li>讲师：能写 if 就不会去重构了（谁要敢这么说，以后估计都不会找到工作了）。</li>
+<li>数据库能力达到上限<ul>
+<li>连接数捉襟见肘</li>
+<li>单机 IOPS 达到瓶颈</li>
+</ul>
+</li>
+<li>数据库容量日趋饱和</li>
+<li>长期高负荷运转，接近崩溃边缘</li>
+<li>数据孤岛<ul>
+<li>数据隔离</li>
+<li>不一致</li>
+<li>无法复用</li>
+</ul>
+</li>
+<li>无法进行全局数据分析</li>
+<li>中间件 / 基础服务<ul>
+<li>RPC</li>
+<li>消息队列</li>
+<li>配置中心</li>
+<li>监控（一直在讲 Java 系相关的内容，没兴趣）</li>
+<li>调用链路分析</li>
+<li>容量规划<ul>
+<li>制造流量 =&gt; 压测单机性能 =&gt; 设定运行水位 =&gt; 计算机器使用量 =&gt; 机器上下线</li>
+<li>每天自动运行压测 =&gt; 部署前进行压测。</li>
+<li>亮点：<pre><code>- 使用线上流量进行压测，和 tcpcopy / goreplay 类似。
+- 根据运行水位自动伸缩，方案的完成度比较高。
+</code></pre></li>
+<li>思考：性能平台达到可以扩张的时候，可以提供在线压测平台。</li>
+</ul>
+</li>
+<li>限流降级</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <div id="article-nav-older" class="article-nav-title">
+      <a href="/2016/11/30/start-using-windows-subsystem-for-linux/">
+        浅尝 Windows Subsystem for Linux
+      </a>
+    </div>
+  
+</nav>
+
+
+  
+</article>
+
+<!-- 默认显示文章目录，在文章---前输入toc: false关闭目录 -->
+<!-- Show TOC and tocButton in default, Hide TOC via putting "toc: false" before "---" at [post].md -->
+<div id="toc" class="toc-article">
+<strong class="toc-title">文章目录</strong>
+<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#大规模系统平衡性能最佳实践和弹性工程"><span class="toc-number">1.</span> <span class="toc-text">大规模系统平衡性能最佳实践和弹性工程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-组件介绍"><span class="toc-number">2.</span> <span class="toc-text">Web 组件介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#零点之战——阿里双11技术架构演进之路"><span class="toc-number">3.</span> <span class="toc-text">零点之战——阿里双11技术架构演进之路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OceanBase：蚂蚁双十一背后的关系数据库"><span class="toc-number">4.</span> <span class="toc-text">OceanBase：蚂蚁双十一背后的关系数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#滴滴弹性在线存储平台"><span class="toc-number">5.</span> <span class="toc-text">滴滴弹性在线存储平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#58-到家微服务架构实践"><span class="toc-number">6.</span> <span class="toc-text">58 到家微服务架构实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DT时代的业务实时监控之道"><span class="toc-number">7.</span> <span class="toc-text">DT时代的业务实时监控之道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题发言-阿里应用运维体系演变"><span class="toc-number">8.</span> <span class="toc-text">主题发言 阿里应用运维体系演变</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主题发言-测量服务的可运维性-Measure-the-operability-of-your-service"><span class="toc-number">9.</span> <span class="toc-text">主题发言 测量服务的可运维性 (Measure the operability of your service)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Swarm优化：从单实例管理-1000-nodes-到-30000-nodes"><span class="toc-number">10.</span> <span class="toc-text">Swarm优化：从单实例管理 1000 nodes 到 30000 nodes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OWL-分布式开源监控最佳实践"><span class="toc-number">11.</span> <span class="toc-text">OWL 分布式开源监控最佳实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网易蜂巢基于-kubernetes-的公有云运维实践"><span class="toc-number">12.</span> <span class="toc-text">网易蜂巢基于 kubernetes 的公有云运维实践</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阿里巴巴-Aliware-十年微服务架构演进历程中的挑战与实践"><span class="toc-number">13.</span> <span class="toc-text">阿里巴巴 Aliware 十年微服务架构演进历程中的挑战与实践</span></a></li></ol>
+</div>
+<style type="text/css">
+  .left-col .switch-btn {
+    display: none;
+  }
+  .left-col .switch-area {
+    display: none;
+  }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script type="text/javascript">
+  var toc_button= document.getElementById("tocButton");
+  var toc_div= document.getElementById("toc");
+  /* Show or hide toc when click on tocButton.
+  通过点击设置的按钮显示或者隐藏文章目录.*/
+  toc_button.onclick=function(){
+  if(toc_div.style.display=="none"){
+  toc_div.style.display="block";
+  toc_button.value="隐藏目录";
+  document.getElementById("switch-btn").style.display="none";
+  document.getElementById("switch-area").style.display="none";
+  }
+  else{
+  toc_div.style.display="none";
+  toc_button.value="显示目录";
+  document.getElementById("switch-btn").style.display="block";
+  document.getElementById("switch-area").style.display="block";
+  }
+  }
+</script>
+
+
+<div class="share ds-share flat"
+    data-thread-key=""
+    data-title="Velocity 2016 参会笔记"
+    data-images="https://crzidea.com/favicon-96x96.png"
+    data-content=""
+    data-url="https://crzidea.com/2016/12/05/velocity-2016-notes/"
+>
+    <div class="ds-share-inline">
+        <ul  class="ds-share-icons-32">
+            <li> <a class="ds-weibo" href="javascript:void(0);" data-service="weibo"></a> </li>
+            <li> <a class="ds-wechat" href="javascript:void(0);" data-service="wechat"></a> </li>
+            <li> <a class="ds-qq" href="javascript:void(0);" data-service="qq"></a> </li>
+            <li> <a class="ds-douban" href="javascript:void(0);" data-service="douban"></a> </li>
+            <li> <a class="ds-twitter" href="javascript:void(0);" data-service="twitter"></a> </li>
+            <li> <a class="ds-facebook" href="javascript:void(0);" data-service="facebook"></a> </li>
+            <li> <a class="ds-linkedin" href="javascript:void(0);" data-service="linkedin"></a> </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016/12/05/velocity-2016-notes/" data-title="Velocity 2016 参会笔记" data-url="https://crzidea.com/2016/12/05/velocity-2016-notes/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"crzidea"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+
+    <style type="text/css">
+    #scroll {
+      display: none;
+    }
+    </style>
+    <div class="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#ds-thread" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    </div>
+
+
+  
+  
+    <div  class="post-nav-button">
+    <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+    <a href="/2016/11/30/start-using-windows-subsystem-for-linux/" title="下一篇: 浅尝 Windows Subsystem for Linux">
+    <i class="fa fa-angle-right"></i>
+    </a>
+    </div>
+  
+    
+
+
+
+    
+        <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+        <script>
+        var yiliaConfig = {
+        fancybox: true,
+        mathjax: true,
+        animate: false,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false
+        }
+        </script>
+    
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2017 crzidea.com
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+        </div>
+    </div>
+    <div class="visit">
+      <span id="busuanzi_container_site_pv" style='display:none'>
+        <span id="site-visit" >本站到访数: 
+        <span id="busuanzi_value_site_uv"></span>
+        </span>
+      </span>
+      <span id="busuanzi_container_page_pv" style='display:none'>
+        <span id="page-visit">, 本页阅读量: 
+        <span id="busuanzi_value_page_pv"></span>
+        </span>
+      </span>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+  <style>
+    body {
+      background: lightgray;
+    }
+    #container .left-col {
+      background: white;
+    }
+    .article-inner {
+      background: white;
+    }
+    .post-nav-button {
+      background: #ececec;
+    }
+    #header .header-nav .social #GitHub {
+      background-color: #bfd3ec;
+    }
+  </style>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-81807912-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+<a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+<a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  </div>
+
+</body>
+</html>
