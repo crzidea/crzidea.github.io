@@ -5,14 +5,14 @@
 # Site
 title: Crzidea
 subtitle:
-description: 假装自己是前端
+description:
 author: crzidea.com
 language:
 timezone: Asia/Chongqing
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://crzidea.com
+url: https://crzidea.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
